@@ -1,0 +1,66 @@
+body{
+    background-color: #F6F6F6;
+}
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+    font-size: 25pt;
+}
+.navbar>.container .navbar-brand-centered,
+.navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+    margin-top: 8px;
+}
+
+body
+{
+    font-family: 'Bree Serif', serif;
+}
+
+.navbarcustom {
+    background-color: #FDF3E7;
+}
+.navbar-nav
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #E3F2FD;
+    color: #000 ;
+}
+
+
+
+
+.parts-title {
+    overflow: hidden;
+    text-align: center;
+}
+.parts-title:before,
+.parts-title:after {
+    background-color: #c6c6c6;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+.parts-title:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+.parts-title:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}

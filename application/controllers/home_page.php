@@ -1,0 +1,111 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: stefan
+ * Date: 12/23/17
+ * Time: 1:11 AM
+ */
+
+class home_page extends CI_Controller
+{
+    public function index (){
+        $this->load->view("home_page.php");
+    }
+    public function login_validation(){
+        $this->form_validation->set_rules('email','Email','required|valid_email|trim|callback_validate_credentials');
+        $this->form_validation->set_rules('password','Password','required|sha1|trim');
+
+        if($this->form_validation->run()){
+            $data=array(
+                'email'=>$this->input->post('email'),
+                'is_logged_in'=> 1
+            );
+            $this->session->set_userdata($data);
+            redirect("dashboard");
+        }
+        else{
+            $this->load->view('login');
+        }
+    }
+    public function register_validation() {
+        $this->form_validation->set_rules('full_name','Full_name','required|trim');
+        $this->form_validation->set_rules('email','Email','required|valid_email|trim|is_unique[users.email]');
+        $this->form_validation->set_rules('password','Password','required|trim');
+        $this->form_validation->set_rules('cpassword','Confirm Password','required|trim|matches[password]');
+        $this->form_validation->set_rules('city','City','required|trim');
+        $this->form_validation->set_rules('country','Country','required|trim');
+
+        $this->form_validation->set_message('is_unique',"That Email address already exists");
+
+        if($this->form_validation->run()) {
+
+            $config = array(
+                'protocol'=>'smtp',
+                'smtp_host'=>'ssl://smtp.gmail.com',
+                'smtp_port'=>465,
+                'smtp_user'=>'stefanmaileremail@gmail.com',
+                'smtp_pass'=>'temppassword',
+                'mailtype'=>'html',
+                'charset'=> 'iso-8859-1',
+                'wordwrap'=>TRUE
+            );
+            $this->load->library('email',$config);
+            $this->load->model("model_users");
+            $this->email->set_newline("\r\n");
+
+            //generate a random key
+             $key=md5(uniqid());
+             //send email to a user
+             $this->email->from('noreply@controllet.com',"Controllet Admin");
+             $this->email->to($this->input->post('email'));
+             $this->email->subject("Confirm your account.");
+             $message="<p>Thank you for signing up for Controllet</p>";
+             $message.="<p><a href='".base_url()."home_page/register_user/$key'>Click here</a> to confirm your account./p>";
+             $this->email->message($message);
+
+
+             if($this->model_users->add_temp_user($key)){
+                 if($this->email->send()){
+                     echo "Activation Email has been sent. Check your inbox!";
+                 }else echo "email could not be sent";
+             }else echo "Problem adding to database";
+             //add them to database with   flag 0
+         }
+         else{
+             $this->load->view("register");
+         }
+        }
+    public function validate_credentials(){
+        $this->load->model('model_users');
+        if($this->model_users->can_log_in()){
+            return true;
+        }
+        else{
+            $this->form_validation->set_message('validate_credentials','Incorrect username/password or you did not activate
+            your account! Check your email.');
+            return false;
+        }
+    }
+
+    public function restricted(){
+        $this->load->view('restricted');
+    }
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('users/login');
+    }
+    public function register_user($key){
+        $this->load->model("model_users");
+        if($this->model_users->is_key_valid($key)){
+            if($newEmail=$this->model_users->add_user($key)){
+
+                $data =array(
+                    'email'=>$newEmail,
+                    'is_logged_in'=>1
+                );
+                $this->session->set_userdata($data);
+                redirect("dashboard");
+            }else echo "account failed to activate";
+        }else echo "invalid key";
+    }
+}
