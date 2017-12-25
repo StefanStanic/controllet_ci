@@ -77,7 +77,11 @@ class home_page extends CI_Controller
         }
     public function validate_credentials(){
         $this->load->model('model_users');
-        if($this->model_users->can_log_in()){
+        if($id_user=$this->model_users->can_log_in()){
+            $data=array(
+                'id'=>$id_user
+            );
+            $this->session->set_userdata($data);
             return true;
         }
         else{
@@ -97,10 +101,11 @@ class home_page extends CI_Controller
     public function register_user($key){
         $this->load->model("model_users");
         if($this->model_users->is_key_valid($key)){
-            if($newEmail=$this->model_users->add_user($key)){
+            if($newData=$this->model_users->add_user($key)){
 
                 $data =array(
-                    'email'=>$newEmail,
+                    'email'=>$newData['email'],
+                    'id_user'=>$newData['id'],
                     'is_logged_in'=>1
                 );
                 $this->session->set_userdata($data);

@@ -33,7 +33,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-brand-centered">
             <ul class="nav navbar-nav">
-                <li><a href="#">Loggen in as: <?php print_r($this->session->userdata('email'));?></a></li>
+                <li><a href="#">Logged in as: <?php print_r($this->session->userdata('email'));?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">My profile</a></li>
@@ -72,10 +72,20 @@
         <div class="col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Bills</h3>
+                    <h3 class="panel-title">Recurring Montly Bills</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    <?php
+                        foreach ($bills as $row){
+//                            echo 'ID <span>'.$row->id_montly_bills.'</span>'.'<br/>';
+                            echo 'Date of bill: <span>'.$row->recurring_date.'</span>'.'<br/>';
+                            echo 'Category <span>'.$row->category.'</span>'.'<br/>';
+                            echo 'Amount to pay: <span>'.$row->amount.' eur</span>'.'<br/>';
+                            echo 'Description: <span>'.$row->description.'</span>'.'<br/>';
+                            echo '<p><a href="'.base_url().'dashboard/pay_bill/'.$row->id_montly_bills.'">Bill payed</a></p>';
+                            echo '<hr>'.'<br/>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>

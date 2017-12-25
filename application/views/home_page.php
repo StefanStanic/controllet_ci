@@ -36,7 +36,7 @@
                 <li><a href="#">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Register</a></li>
+                <li><a href="<?php echo base_url();?>users/register">Register</a></li>
                 <li><a href="<?php echo base_url();?>users/login">Login</a></li>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>

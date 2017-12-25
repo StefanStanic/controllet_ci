@@ -5,9 +5,10 @@ class Model_users extends CI_Model{
         $this->db->where('password',sha1($this->input->post('password')));
         $this->db->where('active',2);
         $query=$this->db->get('users');
+        $userId=$query->row();
 
         if($query->num_rows()===1){
-            return true;
+            return $userId->id_user;
         }
         else{
             return false;
@@ -51,9 +52,12 @@ class Model_users extends CI_Model{
         $emailGet=$this->db->get('users');
         $row=$emailGet->row();
         $query=$this->db->update('users',$data);
-
+        $user_data=array(
+            'email'=> $row->email,
+            'id'=> $row->id_user
+        );
         if($query){
-            return $row->email;
+            return $user_data;
         }else {
             return false;
         }
