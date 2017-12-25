@@ -46,4 +46,17 @@ class dashboard_model extends CI_Model
             }
         }
 
+        public function add_re_bill($data){
+            $id=$data['id_user'];
+            $this->db->where('id_user',$id);
+            $query=$this->db->insert('recurring_montly_bills',$data);
+            if($query){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
 }
