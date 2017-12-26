@@ -130,10 +130,10 @@
                 <div class="panel-body">
                     <?php
                     $tot_income=0;
-                    foreach ($income as $row){
-                        $tot_income+=$row->amount_of_monthly_income;
+                    foreach ($budget as $row){
+                        $tot_budget=$row->budget_amount;
                     }
-                    echo '<h3 align="center">Total monthly budget: </h3><p align="center">'.$tot_income.' eur'.'<br/>';
+                    echo '<h3 align="center">Total monthly budget: </h3><p align="center">'.$tot_budget.' eur'.'<br/>';
                     ?>
                 </div>
             </div>

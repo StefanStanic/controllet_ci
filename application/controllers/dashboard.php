@@ -40,6 +40,7 @@ class dashboard extends CI_Controller{
             $data['bills']=$this->dashboard_model->get_bills();
             $data['transactions']=$this->dashboard_model->get_transactions();
             $data['income']=$this->dashboard_model->get_income();
+            $data['budget']=$this->dashboard_model->get_budget();
             $this->load->view("dashboard",$data);
         }
         else{
@@ -52,8 +53,12 @@ class dashboard extends CI_Controller{
         $this->load->model("dashboard_model");
         $id_user=$this->session->userdata('id');
         if($this->dashboard_model->can_pay_my_bills($key)){
-            if($this->dashboard_model->pay_my_bills($key)){
-                redirect("dashboard");
+            if($amountPay=$this->dashboard_model->pay_my_bills($key)){
+                $id_user=$this->session->userdata('id');
+                if($this->dashboard_model->update_budget_after_pay($amountPay)){
+                    redirect("dashboard");
+                }
+
             }else echo "failed to find the bill";
         }else echo "failed to pay";
     }
