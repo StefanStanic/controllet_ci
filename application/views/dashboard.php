@@ -27,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand navbar-brand-centered">Controllet</div>
+            <div class="navbar-brand navbar-brand-centered"><a href="<?php echo base_url();?>dashboard">Controllet</a></div>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,8 +50,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-brand-centered">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Overview</a></li>
-                    <li><a href="#"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp;My bills</a></li>
+                    <li><a href="<?php echo base_url();?>dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Overview</a></li>
+                    <li><a href="<?php echo base_url();?>dashboard/add_new_bill"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp Add a new bill</a></li>
+                    <li><a href="<?php echo base_url();?>dashboard/control_bills"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp All my bills</a></li>
                     <li><a href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;My Income</a></li>
                     <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;My Calendar</a></li>
                 </ul>
@@ -77,13 +78,13 @@
                 <div class="panel-body">
                     <?php
                         foreach ($bills as $row){
-//                            echo 'ID <span>'.$row->id_montly_bills.'</span>'.'<br/>';
-                            echo 'Date of bill: <span>'.$row->recurring_date.'</span>'.'<br/>';
-                            echo 'Category <span>'.$row->category.'</span>'.'<br/>';
-                            echo 'Amount to pay: <span>'.$row->amount.' eur</span>'.'<br/>';
-                            echo 'Description: <span>'.$row->description.'</span>'.'<br/>';
-                            echo '<p><a href="'.base_url().'dashboard/pay_bill/'.$row->id_montly_bills.'">Bill payed</a></p>';
-                            echo '<hr>'.'<br/>';
+                            echo '<div class="col-lg-6 col-sm-12">';
+                            echo '<b>Date of bill: </b><span>'.$row->recurring_date.'</span>'.'<br/>';
+                            echo '<b>Category: </b> <span>'.$row->category.'</span>'.'<br/>';
+                            echo '<b>Amount to pay: </b><span>'.$row->amount.' eur</span>'.'<br/>';
+                            echo '<b>Description: </b><span>'.$row->description.'</span>'.'<br/>'.'<br/>';
+                            echo '<p><a class="btn btn-warning" role="button" href="'.base_url().'dashboard/pay_bill/'.$row->id_montly_bills.'">Clear Bill</a></p>';
+                            echo '</div>';
                         }
                     ?>
                 </div>

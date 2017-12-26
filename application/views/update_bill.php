@@ -46,17 +46,21 @@
 <div class="container">
     <h2 align="center">Add a Recurring Montly Bill</h2>
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
-        <?php echo form_open('dashboard/new_rec_bill_validation');?>
-            <?php
-            echo form_input(['name' => 'recurring_date', 'id' => 'recurring_date', 'class' => 'form-control', 'value' => set_value('recurring_date'), 'placeholder' => 'Recuring date']);
-            echo form_input(['name' => 'category', 'id' => 'category', 'class' => 'form-control', 'value' => set_value('category'), 'placeholder' => 'Category']);
-            echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount']);
-            echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => set_value('description'), 'placeholder' => 'Description']);
-            echo form_hidden('id_user',$this->session->userdata('id'));
-            echo '<br/>';
-            echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a bill</button></p>';
-            ?>
-        <?php echo form_close();?>
+    <?php echo form_open('dashboard/update_rec_bill_validation');?>
+    <?php
+
+    foreach ($bill as $row) {
+
+        echo form_input(['name' => 'recurring_date', 'id' => 'recurring_date', 'class' => 'form-control', 'value' => $row->recurring_date, 'placeholder' => 'Recuring date']);
+        echo form_input(['name' => 'category', 'id' => 'category', 'class' => 'form-control', 'value' => $row->category, 'placeholder' => 'Category']);
+        echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => $row->amount, 'placeholder' => 'Amount']);
+        echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => $row->description, 'placeholder' => 'Description']);
+        echo form_hidden('id_user', $row->id_montly_bills);
+        echo '<br/>';
+        echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Update Bill</button></p>';
+    }
+    ?>
+    <?php echo form_close();?>
     <?php echo validation_errors(); ?>
 </div>
 </body>

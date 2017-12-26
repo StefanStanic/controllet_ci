@@ -17,6 +17,21 @@ class dashboard extends CI_Controller{
     public function add_new_bill(){
         $this->load->view('add_new_bill');
     }
+
+    public function update_bill($key){
+        $data['bill']=$this->dashboard_model->get_specific_bill($key);
+        $this->load->view('update_bill',$data);
+    }
+
+    public function delete_bill($key){
+        $this->dashboard_model->detele_specific_bill($key);
+        $this->load->view('control_bills');
+    }
+
+    public function control_bills(){
+        $data['bills']=$this->dashboard_model->get_bills();
+        $this->load->view('control_bills',$data);
+    }
     public function index(){
         if($this->session->userdata('is_logged_in')===1){
             $data['bills']=$this->dashboard_model->get_bills();
@@ -62,5 +77,34 @@ class dashboard extends CI_Controller{
         else{
             redirect('dashboard');
         }
+
+    }
+
+    public function update_rec_bill_validation() {
+        $this->form_validation->set_rules('recurring_date','recurring_date','required|trim');
+        $this->form_validation->set_rules('category','category','required|trim');
+        $this->form_validation->set_rules('amount','amount','required|trim');
+        $this->form_validation->set_rules('description','description','required|trim');
+
+        if($this->form_validation->run()) {
+            $this->load->model('dashboard_model');
+            $data=array(
+                "recurring_date"=>$this->input->post('recurring_date'),
+                "category"=>$this->input->post('category'),
+                "amount"=>$this->input->post('amount'),
+                "description"=>$this->input->post('description'),
+                "id_user"=>$this->input->post('id_user')
+            );
+            if($this->dashboard_model->update_re_bill($data)){
+                redirect('dashboard/control_bills');
+            }
+            else{
+                redirect('dashboard');
+            }
+        }
+        else{
+            redirect('dashboard');
+        }
+
     }
 }
