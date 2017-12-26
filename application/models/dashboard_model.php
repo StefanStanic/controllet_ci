@@ -11,6 +11,24 @@ class dashboard_model extends CI_Model
         return $query->result();
     }
 
+    public function get_transactions(){
+        $datenow=date('Y-m-d');
+        $date7=date('Y-m-d', strtotime('-1 week'));
+        $userId = $this->session->userdata('id');
+        $this->db->where('id_user', $userId);
+//        echo "SELECT * from transactions WHERE date_of_transaction BETWEEN '$date7' AND '$datenow'";
+        $query=$this->db->query("SELECT * from transactions WHERE date_of_transaction BETWEEN '$date7' AND '$datenow'");
+        return $query->result();
+    }
+
+    public function get_income()
+    {
+        $userId = $this->session->userdata('id');
+        $this->db->where('id_user', $userId);
+        $query = $this->db->get('my_income');
+        return $query->result();
+    }
+
     public function get_specific_bill($id)
     {
         $this->db->where('id_montly_bills', $id);
@@ -32,6 +50,12 @@ class dashboard_model extends CI_Model
         echo $key;
         $this->db->where('id_montly_bills',$key);
         $query=$this->db->get('recurring_montly_bills');
+//        $row=$query->row();
+//
+//        $userID=$this->session->userdata('id');
+//        $this->db->where('id_user',$userID);
+//        $query1=$this->db->get('my_income');
+//        $row1=$query1->row();
         if($query->num_rows()==1){
             return true;
         }else{
@@ -75,6 +99,20 @@ class dashboard_model extends CI_Model
                 return false;
             }
         }
+
+        public function add_new_income($data){
+            $id=$data['id_user'];
+            $this->db->where('id_user',$id);
+            $query=$this->db->insert('my_income',$data);
+            if($query){
+                return true;
+            }
+            else{
+                return false;
+            }
+    }
+
+
 
         public function update_re_bill($data){
             $id=$data['id_user'];

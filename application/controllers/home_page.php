@@ -66,7 +66,7 @@ class home_page extends CI_Controller
 
              if($this->model_users->add_temp_user($key)){
                  if($this->email->send()){
-                     echo "Activation Email has been sent. Check your inbox!";
+                     redirect('users/login');
                  }else echo "email could not be sent";
              }else echo "Problem adding to database";
              //add them to database with   flag 0
@@ -105,7 +105,7 @@ class home_page extends CI_Controller
 
                 $data =array(
                     'email'=>$newData['email'],
-                    'id_user'=>$newData['id'],
+                    'id'=>$newData['id'],
                     'is_logged_in'=>1
                 );
                 $this->session->set_userdata($data);

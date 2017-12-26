@@ -37,7 +37,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">My profile</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="<?php echo base_url();?>dashboard/settings">Settings</a></li>
                 <li><a href="<?php echo base_url();?>home_page/logout">Log Out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -66,7 +66,15 @@
                     <h3 class="panel-title">Transaction Last 7 Days</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    <?php
+                    foreach ($transactions as $row){
+                        echo '<div class="col-lg-6 col-sm-12">';
+                        echo '<b>Date of transaction: </b><span>'.$row->date_of_transaction.'</span>'.'<br/>';
+                        echo '<b>Category: </b><span>'.$row->category.'</span>'.'<br/>';
+                        echo '<b>Transaction amount: </b><span>'.$row->transaction_amount.'</span>'.'<br/>'.'<br/>';
+                        echo '</div>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -120,7 +128,13 @@
                     <h3 class="panel-title">My Budget</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    <?php
+                    $tot_income=0;
+                    foreach ($income as $row){
+                        $tot_income+=$row->amount_of_monthly_income;
+                    }
+                    echo '<h3 align="center">Total monthly budget: </h3><p align="center">'.$tot_income.' eur'.'<br/>';
+                    ?>
                 </div>
             </div>
         </div>
@@ -130,7 +144,15 @@
                     <h3 class="panel-title">My Income</h3>
                 </div>
                 <div class="panel-body">
-                    Panel content
+                    <?php
+                    foreach ($income as $row){
+                        echo '<b><h4 align="center">Company: </h4></b><p align="center">'.$row->company.'</p>';
+                        echo '<b><h4 align="center">Date of income:</h4></b> <p align="center">'.$row->date_of_monthly_income.'</p>';
+                        echo '<b><h4 align="center">Amount of income: </h4></b><p align="center">'.$row->amount_of_monthly_income.' eur</p>';
+                        echo '<b><h4 align="center">Job Category: </h4></b><p align="center">'.$row->job_category.'</p>'.'<br/>';
+                        echo '<hr>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>

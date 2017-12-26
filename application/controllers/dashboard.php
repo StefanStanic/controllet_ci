@@ -17,7 +17,10 @@ class dashboard extends CI_Controller{
     public function add_new_bill(){
         $this->load->view('add_new_bill');
     }
-
+    public function settings()
+    {
+        $this->load->view('settings');
+    }
     public function update_bill($key){
         $data['bill']=$this->dashboard_model->get_specific_bill($key);
         $this->load->view('update_bill',$data);
@@ -35,6 +38,8 @@ class dashboard extends CI_Controller{
     public function index(){
         if($this->session->userdata('is_logged_in')===1){
             $data['bills']=$this->dashboard_model->get_bills();
+            $data['transactions']=$this->dashboard_model->get_transactions();
+            $data['income']=$this->dashboard_model->get_income();
             $this->load->view("dashboard",$data);
         }
         else{
@@ -45,6 +50,7 @@ class dashboard extends CI_Controller{
     public function pay_bill($key){
         /*echo $key;*/
         $this->load->model("dashboard_model");
+        $id_user=$this->session->userdata('id');
         if($this->dashboard_model->can_pay_my_bills($key)){
             if($this->dashboard_model->pay_my_bills($key)){
                 redirect("dashboard");
@@ -68,6 +74,34 @@ class dashboard extends CI_Controller{
                 "id_user"=>$this->input->post('id_user')
             );
             if($this->dashboard_model->add_re_bill($data)){
+                redirect('dashboard');
+            }
+            else{
+                redirect('dashboard');
+            }
+        }
+        else{
+            redirect('dashboard');
+        }
+
+    }
+
+    public function new_income_validation() {
+        $this->form_validation->set_rules('company','company','required|trim');
+        $this->form_validation->set_rules('date_of_monthly_income','date_of_monthly_income','required|trim');
+        $this->form_validation->set_rules('amount_of_monthly_income','amount_of_monthly_income','required|trim');
+        $this->form_validation->set_rules('job_category','job_category','required|trim');
+
+        if($this->form_validation->run()) {
+            $this->load->model('dashboard_model');
+            $data=array(
+                "company"=>$this->input->post('company'),
+                "date_of_monthly_income"=>$this->input->post('date_of_monthly_income'),
+                "amount_of_monthly_income"=>$this->input->post('amount_of_monthly_income'),
+                "job_category"=>$this->input->post('job_category'),
+                "id_user"=>$this->input->post('id_user')
+            );
+            if($this->dashboard_model->add_new_income($data)){
                 redirect('dashboard');
             }
             else{
