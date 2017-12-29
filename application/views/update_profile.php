@@ -45,32 +45,23 @@
 <div class="container">
     <h2 align="center">Add a Recurring Montly Bill</h2>
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
-        <?php echo form_open('dashboard/new_rec_bill_validation');?>
-            <?php
-            echo form_input(['name' => 'recurring_date', 'id' => 'recurring_date', 'class' => 'form-control', 'value' => set_value('recurring_date'), 'placeholder' => 'Recuring date']);
-            echo form_input(['name' => 'category', 'id' => 'category', 'class' => 'form-control', 'value' => set_value('category'), 'placeholder' => 'Category']);
-            echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount']);
-            echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => set_value('description'), 'placeholder' => 'Description']);
-            echo form_hidden('id_user',$this->session->userdata('id'));
-            echo '<br/>';
-            echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a bill</button></p>';
-            ?>
-        <?php echo form_close();?>
+    <?php echo form_open('dashboard/update_profile_validation');?>
+    <?php
+
+    foreach ($profile as $row) {
+
+        echo form_input(['name' => 'full_name', 'id' => 'full_name', 'class' => 'form-control', 'value' => $row->full_name, 'placeholder' => 'Full Name']);
+        echo form_input(['name' => 'phone_number', 'id' => 'phone_number', 'class' => 'form-control', 'value' => $row->phone_number, 'placeholder' => 'Phone Number']);
+        echo form_input(['name' => 'location_city', 'id' => 'location_city', 'class' => 'form-control', 'value' => $row->location_city, 'placeholder' => 'City']);
+        echo form_input(['name' => 'location_country', 'id' => 'location_country', 'class' => 'form-control', 'value' => $row->location_country, 'placeholder' => 'Country']);
+        echo form_hidden('id_user', $row->id_user);
+        echo '<br/>';
+        echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Update Profile</button></p>';
+    }
+    ?>
+    <?php echo form_close();?>
     <?php echo validation_errors(); ?>
+    <?php echo "</div>";?>
 </div>
-<script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-datepicker3.min.css">
-<script>
-    $(document).ready(function(){
-        var date_input=$('input[name="recurring_date"]');
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'yyyy-mm-dd',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
-    })
-</script>
 </body>
 </html>

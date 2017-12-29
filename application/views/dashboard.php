@@ -9,10 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!--Linking style || linking JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="<?php echo base_url();?>js/bootstrap.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
 </head>
@@ -36,8 +36,7 @@
                 <li><a href="#">Logged in as: <?php print_r($this->session->userdata('email'));?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">My profile</a></li>
-                <li><a href="<?php echo base_url();?>dashboard/settings">Settings</a></li>
+                <li><a href="<?php echo base_url();?>/dashboard/profile">My profile</a></li>
                 <li><a href="<?php echo base_url();?>home_page/logout">Log Out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -53,8 +52,7 @@
                     <li><a href="<?php echo base_url();?>dashboard"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Overview</a></li>
                     <li><a href="<?php echo base_url();?>dashboard/add_new_bill"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp Add a new bill</a></li>
                     <li><a href="<?php echo base_url();?>dashboard/control_bills"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp All my bills</a></li>
-                    <li><a href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;My Income</a></li>
-                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;My Calendar</a></li>
+                    <li><a href="<?php echo base_url();?>dashboard/add_my_income"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;Add My Income</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -100,20 +98,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Tasks</h3>
-                </div>
-                <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">My Calendar</h3>
                 </div>
                 <div class="panel-body">
                     Panel content
@@ -129,7 +117,7 @@
                 </div>
                 <div class="panel-body">
                     <?php
-                    $tot_income=0;
+                    $tot_budget=0;
                     foreach ($budget as $row){
                         $tot_budget=$row->budget_amount;
                     }
@@ -138,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="myincome">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Income</h3>
@@ -157,24 +145,24 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 align="center" class="panel-title">Totals Summary</h3>
-                </div>
-
-                <div class="col-lg-6">
-                    <h4 align="center">Account Summary</h4>
-                    <hr>
-                </div>
-                <div class="col-lg-6">
-                    <h4 align="center">Month Cash Flow</h4>
-                    <hr>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col-lg-12">-->
+<!--            <div class="panel panel-default">-->
+<!--                <div class="panel-heading">-->
+<!--                    <h3 align="center" class="panel-title">Totals Summary</h3>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="col-lg-6">-->
+<!--                    <h4 align="center">Account Summary</h4>-->
+<!--                    <hr>-->
+<!--                </div>-->
+<!--                <div class="col-lg-6">-->
+<!--                    <h4 align="center">Month Cash Flow</h4>-->
+<!--                    <hr>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 </body>
 </html>

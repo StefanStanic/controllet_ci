@@ -36,8 +36,7 @@
                 <li><a href="#">Logged in as: <?php print_r($this->session->userdata('email'));?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">My profile</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="<?php echo base_url();?>/dashboard/profile">My profile</a></li>
                 <li><a href="<?php echo base_url();?>home_page/logout">Log Out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

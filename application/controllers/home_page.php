@@ -39,6 +39,16 @@ class home_page extends CI_Controller
 
         if($this->form_validation->run()) {
 
+            $config['upload_path']          = './pictures/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 100;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('userpicture');
+
             $config = array(
                 'protocol'=>'smtp',
                 'smtp_host'=>'ssl://smtp.gmail.com',
@@ -75,6 +85,8 @@ class home_page extends CI_Controller
              $this->load->view("register");
          }
         }
+
+
     public function validate_credentials(){
         $this->load->model('model_users');
         if($id_user=$this->model_users->can_log_in()){

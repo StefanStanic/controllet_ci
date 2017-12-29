@@ -2,6 +2,7 @@
 
 class dashboard_model extends CI_Model
 {
+
     public function get_bills()
     {
         $userId = $this->session->userdata('id');
@@ -28,6 +29,16 @@ class dashboard_model extends CI_Model
         $query = $this->db->get('my_income');
         return $query->result();
     }
+
+    public function get_user_details(){
+    $userId = $this->session->userdata('id');
+    $this->db->where('id_user',$userId);
+    $query=$this->db->get('users');
+    return $query->result();
+    }
+
+
+
     public function get_budget()
     {
         $userId = $this->session->userdata('id');
@@ -40,6 +51,12 @@ class dashboard_model extends CI_Model
     {
         $this->db->where('id_montly_bills', $id);
         $query = $this->db->get('recurring_montly_bills');
+        return $query->result();
+    }
+
+    public function get_specific_profile($id){
+        $this->db->where('id_user',$id);
+        $query=$this->db->get('users');
         return $query->result();
     }
     public function detele_specific_bill($id){
@@ -168,6 +185,27 @@ class dashboard_model extends CI_Model
                 return false;
             }
     }
+
+    public function update_re_profile($data){
+        $id=$data['id_user'];
+
+        $updateData=array(
+            "full_name"=>$data['full_name'],
+            "phone_number"=>$data['phone_number'],
+            "location_city"=>$data['location_city'],
+            "location_country"=>$data['location_country']
+        );
+        $this->db->where('id_user',$id);
+        $query=$this->db->update('users',$updateData);
+        if($query){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
 
     public function update_budget_after_pay($data){
         $id=$this->session->userdata('id');

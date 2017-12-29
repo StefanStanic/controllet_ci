@@ -36,8 +36,7 @@
                 <li><a href="#">Logged in as: <?php print_r($this->session->userdata('email'));?></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">My profile</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="<?php echo base_url();?>/dashboard/profile">My profile</a></li>
                 <li><a href="<?php echo base_url();?>home_page/logout">Log Out</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -62,6 +61,20 @@
     ?>
     <?php echo form_close();?>
     <?php echo validation_errors(); ?>
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-datepicker3.min.css">
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="recurring_date"]');
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'yyyy-mm-dd',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
+        })
+    </script>
 </div>
 </body>
 </html>

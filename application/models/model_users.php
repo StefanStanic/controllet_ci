@@ -22,6 +22,7 @@ class Model_users extends CI_Model{
             'phone_number'=> $this->input->post('phone'),
             'location_city'=> $this->input->post('city'),
             'location_country'=> $this->input->post('country'),
+            'picture'=>$this->input->post('userpicture'),
             'active'=> 1,
             'reg_key'=> $key
         );

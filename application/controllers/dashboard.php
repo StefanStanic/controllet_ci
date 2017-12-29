@@ -17,13 +17,21 @@ class dashboard extends CI_Controller{
     public function add_new_bill(){
         $this->load->view('add_new_bill');
     }
-    public function settings()
+    public function add_my_income()
     {
-        $this->load->view('settings');
+        $this->load->view('my_income');
+    }
+    public function profile(){
+        $data['profile']=$this->dashboard_model->get_user_details();
+        $this->load->view('profile',$data);
     }
     public function update_bill($key){
         $data['bill']=$this->dashboard_model->get_specific_bill($key);
         $this->load->view('update_bill',$data);
+    }
+    public function update_profile($key){
+        $data['profile']=$this->dashboard_model->get_specific_profile($key);
+        $this->load->view('update_profile',$data);
     }
 
     public function delete_bill($key){
@@ -136,6 +144,34 @@ class dashboard extends CI_Controller{
             );
             if($this->dashboard_model->update_re_bill($data)){
                 redirect('dashboard/control_bills');
+            }
+            else{
+                redirect('dashboard');
+            }
+        }
+        else{
+            redirect('dashboard');
+        }
+
+    }
+
+    public function update_profile_validation() {
+        $this->form_validation->set_rules('full_name','full_name','required|trim');
+        $this->form_validation->set_rules('phone_number','phone_number','required|trim');
+        $this->form_validation->set_rules('location_city','location_city','required|trim');
+        $this->form_validation->set_rules('location_country','location_country','required|trim');
+
+        if($this->form_validation->run()) {
+            $this->load->model('dashboard_model');
+            $data=array(
+                "full_name"=>$this->input->post('full_name'),
+                "phone_number"=>$this->input->post('phone_number'),
+                "location_city"=>$this->input->post('location_city'),
+                "location_country"=>$this->input->post('location_country'),
+                "id_user"=>$this->input->post('id_user')
+            );
+            if($this->dashboard_model->update_re_profile($data)){
+                redirect('dashboard/profile');
             }
             else{
                 redirect('dashboard');

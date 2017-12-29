@@ -33,7 +33,7 @@
 </nav>
 <div class="container">
         <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
-        <?php echo form_open('home_page/register_validation');?>
+        <?php echo form_open_multipart('home_page/register_validation');?>
         <?php
         echo form_input(['name' => 'full_name', 'id' => 'full_name', 'class' => 'form-control', 'value' => set_value('full_name'), 'placeholder' => 'Full_name']);
         echo form_input(['name' => 'email', 'id' => 'email', 'class' => 'form-control', 'value' => set_value('email'), 'placeholder' => 'Email']);
@@ -42,6 +42,7 @@
         echo form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control', 'value' => set_value('phone'), 'placeholder' => 'Phone']);
         echo form_input(['name' => 'city', 'id' => 'city', 'class' => 'form-control', 'value' => set_value('city'), 'placeholder' => 'City']);
         echo form_input(['name' => 'country', 'id' => 'country', 'class' => 'form-control', 'value' => set_value('country'), 'placeholder' => 'Country']);
+        echo '<input type="file" name="userpicture" size="20" />';
         echo '<br/>';
         echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Register</button></p>';
         ?>
