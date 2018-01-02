@@ -27,7 +27,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand navbar-brand-centered">Controllet</div>
+            <div class="navbar-brand navbar-brand-centered"><a href="<?php echo base_url();?>home_page">Controllet</a></div>
         </div>
     </div><!-- /.container-fluid -->
 </nav>
@@ -42,7 +42,7 @@
         echo form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control', 'value' => set_value('phone'), 'placeholder' => 'Phone']);
         echo form_input(['name' => 'city', 'id' => 'city', 'class' => 'form-control', 'value' => set_value('city'), 'placeholder' => 'City']);
         echo form_input(['name' => 'country', 'id' => 'country', 'class' => 'form-control', 'value' => set_value('country'), 'placeholder' => 'Country']);
-        echo '<input type="file" name="userpicture" size="20" />';
+        echo '<input type="file" name="userpicture"/>';
         echo '<br/>';
         echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Register</button></p>';
         ?>

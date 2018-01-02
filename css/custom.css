@@ -88,3 +88,7 @@ table.calendar{
 .calendar .highlight{
     font-weight: bold;
 }
+
+.heightFix{
+    min-height: 300px !important;
+}

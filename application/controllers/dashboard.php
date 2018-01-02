@@ -162,15 +162,30 @@ class dashboard extends CI_Controller{
         $this->form_validation->set_rules('location_country','location_country','required|trim');
 
         if($this->form_validation->run()) {
-            $this->load->model('dashboard_model');
+
+            $config['upload_path']          ='./pictures/profile_pictures/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 10000;
+            $config['max_width']            = 5000;
+            $config['max_height']           = 5000;
+
+            $this->load->library('upload', $config);
+
+            $this->upload->do_upload('userpictures');
+
+
             $data=array(
                 "full_name"=>$this->input->post('full_name'),
                 "phone_number"=>$this->input->post('phone_number'),
                 "location_city"=>$this->input->post('location_city'),
                 "location_country"=>$this->input->post('location_country'),
+                "picture"=>$this->upload->data('file_name'),
                 "id_user"=>$this->input->post('id_user')
             );
-            if($this->dashboard_model->update_re_profile($data)){
+
+            $this->load->model('dashboard_model');
+            if($checksomethng=$this->dashboard_model->update_re_profile($data)){
+//                var_dump($checksomethng);
                 redirect('dashboard/profile');
             }
             else{

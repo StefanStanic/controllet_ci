@@ -59,7 +59,7 @@
     </nav>
     <div class="row">
         <div class="col-lg-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default heightFix">
                 <div class="panel-heading">
                     <h3 class="panel-title">Transaction Last 7 Days</h3>
                 </div>
@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default heightFix">
                 <div class="panel-heading">
                     <h3 class="panel-title">Recurring Montly Bills</h3>
                 </div>
@@ -98,20 +98,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tasks</h3>
-                </div>
-                <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-lg-6">
-            <div class="panel panel-default">
+            <div class="panel panel-default heightFix">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Budget</h3>
                 </div>
@@ -127,7 +115,7 @@
             </div>
         </div>
         <div class="col-lg-6" id="myincome">
-            <div class="panel panel-default">
+            <div class="panel panel-default heightFix">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Income</h3>
                 </div>
@@ -145,24 +133,18 @@
             </div>
         </div>
     </div>
-<!--    <div class="row">-->
-<!--        <div class="col-lg-12">-->
-<!--            <div class="panel panel-default">-->
-<!--                <div class="panel-heading">-->
-<!--                    <h3 align="center" class="panel-title">Totals Summary</h3>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="col-lg-6">-->
-<!--                    <h4 align="center">Account Summary</h4>-->
-<!--                    <hr>-->
-<!--                </div>-->
-<!--                <div class="col-lg-6">-->
-<!--                    <h4 align="center">Month Cash Flow</h4>-->
-<!--                    <hr>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-</div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default heightFix">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Tasks</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

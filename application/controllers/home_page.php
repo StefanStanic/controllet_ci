@@ -39,11 +39,11 @@ class home_page extends CI_Controller
 
         if($this->form_validation->run()) {
 
-            $config['upload_path']          = './pictures/';
+            $config['upload_path']          = './pictures/profile_pictures/';
             $config['allowed_types']        = 'gif|jpg|png';
             $config['max_size']             = 100;
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
+            $config['max_width']            = 5000;
+            $config['max_height']           = 5000;
 
             $this->load->library('upload', $config);
 

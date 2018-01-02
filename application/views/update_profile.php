@@ -43,17 +43,18 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-    <h2 align="center">Add a Recurring Montly Bill</h2>
+    <h2 align="center">Update profile</h2>
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
-    <?php echo form_open('dashboard/update_profile_validation');?>
+    <?php echo form_open_multipart('dashboard/update_profile_validation');?>
     <?php
 
     foreach ($profile as $row) {
 
-        echo form_input(['name' => 'full_name', 'id' => 'full_name', 'class' => 'form-control', 'value' => $row->full_name, 'placeholder' => 'Full Name']);
-        echo form_input(['name' => 'phone_number', 'id' => 'phone_number', 'class' => 'form-control', 'value' => $row->phone_number, 'placeholder' => 'Phone Number']);
-        echo form_input(['name' => 'location_city', 'id' => 'location_city', 'class' => 'form-control', 'value' => $row->location_city, 'placeholder' => 'City']);
-        echo form_input(['name' => 'location_country', 'id' => 'location_country', 'class' => 'form-control', 'value' => $row->location_country, 'placeholder' => 'Country']);
+        echo '<p align="center">Full Name: </p>'. form_input(['name' => 'full_name', 'id' => 'full_name', 'class' => 'form-control', 'value' => $row->full_name, 'placeholder' => 'Full Name']);
+        echo '<p align="center">Phone Number: </p>'.form_input(['name' => 'phone_number', 'id' => 'phone_number', 'class' => 'form-control', 'value' => $row->phone_number, 'placeholder' => 'Phone Number']);
+        echo '<p align="center">City: </p>'.form_input(['name' => 'location_city', 'id' => 'location_city', 'class' => 'form-control', 'value' => $row->location_city, 'placeholder' => 'City']);
+        echo '<p align="center">Country: </p>'.form_input(['name' => 'location_country', 'id' => 'location_country', 'class' => 'form-control', 'value' => $row->location_country, 'placeholder' => 'Country']);
+        echo '<input type="file" name="userpictures">';
         echo form_hidden('id_user', $row->id_user);
         echo '<br/>';
         echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Update Profile</button></p>';

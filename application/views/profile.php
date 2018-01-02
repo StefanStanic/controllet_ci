@@ -47,12 +47,12 @@
     foreach ($profile as $row){
         if($row->picture==null){
 
-            $picture="/pictures/default-profile.png";
+            $picture="/default-profile.png";
         }
         else{
             $picture=$row->picture;
         }
-        echo '<p align="center"><img height="150" width="150" src="'.base_url().$picture.'"></p>';
+        echo '<p align="center"><img height="150" width="150" src="'.base_url().'pictures/profile_pictures/'.$picture.'"></p>';
         echo '<p align="center" style="font-size: 20pt">Full Name: '.$row->full_name.'</p>';
         echo '<p align="center" style="font-size: 20pt">Email: '.$row->email.'</p>';
         echo '<p align="center" style="font-size: 20pt">Phone Number: '.$row->phone_number.'</p>';
