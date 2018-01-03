@@ -22,6 +22,50 @@ class dashboard_model extends CI_Model
         return $query->result();
     }
 
+    public function get_current_month_transactions_by_type(){
+        $userId = $this->session->userdata('id');
+        $currentMonth=date('m');
+        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Phone' and MONTH(date_of_transaction)='$currentMonth'");
+        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Internet' and MONTH(date_of_transaction)='$currentMonth'");
+        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Electricity' and MONTH(date_of_transaction)='$currentMonth'");
+        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Water' and MONTH(date_of_transaction)='$currentMonth'");
+        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Mortgage' and MONTH(date_of_transaction)='$currentMonth'");
+        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Car Payment' and MONTH(date_of_transaction)='$currentMonth'");
+
+        $statData=array(
+            "1"=>$queryPhone->result(),
+            "2"=>$queryInternet->result(),
+            "3"=>$queryElectricity->result(),
+            "4"=>$queryWater->result(),
+            "5"=>$queryMortgage->result(),
+            "6"=>$queryCarPayment->result()
+        );
+        return $statData;
+    }
+
+    public function get_previous_month_transactions_by_type(){
+        $userId = $this->session->userdata('id');
+        $pastMonth = (int) date('n', strtotime('-1 months'));
+        $pastMonthyear = (int) date('Y', strtotime('-1 months'));
+
+        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Phone' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Internet' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Electricity' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Water' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Mortgage' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='Car Payment' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+
+        $statData=array(
+            "1"=>$queryPhone->result(),
+            "2"=>$queryInternet->result(),
+            "3"=>$queryElectricity->result(),
+            "4"=>$queryWater->result(),
+            "5"=>$queryMortgage->result(),
+            "6"=>$queryCarPayment->result()
+        );
+        return $statData;
+    }
+
     public function get_income()
     {
         $userId = $this->session->userdata('id');
@@ -78,12 +122,12 @@ class dashboard_model extends CI_Model
 
         $userID=$this->session->userdata('id');
         $this->db->where('id_user',$userID);
-        $query1=$this->db->get('my_income');
+        $query1=$this->db->get('budget');
         $row1=$query1->row();
 
 //        echo $row->amount.'<br>';
 //        echo $row1->amount_of_monthly_income.'<br>';
-        if($row->amount <= $row1->amount_of_monthly_income){
+        if($row->amount <= $row1->budget_amount){
             return $row->amount;
         }else{
             return false;

@@ -46,9 +46,19 @@
     <h2 align="center">Add a Recurring Montly Bill</h2>
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
         <?php echo form_open('dashboard/new_rec_bill_validation');?>
+
             <?php
+            $options = array(
+                '1' => 'Phone',
+                '2' => 'Internet',
+                '3' => 'Electricity',
+                '4' => 'Water',
+                '5' => 'Mortgage',
+                '6' => 'Car Payment'
+            );
+
             echo form_input(['name' => 'recurring_date', 'id' => 'recurring_date', 'class' => 'form-control', 'value' => set_value('recurring_date'), 'placeholder' => 'Recuring date']);
-            echo form_input(['name' => 'category', 'id' => 'category', 'class' => 'form-control', 'value' => set_value('category'), 'placeholder' => 'Category']);
+            echo form_dropdown('category',$options,'Phone');
             echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount']);
             echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => set_value('description'), 'placeholder' => 'Description']);
             echo form_hidden('id_user',$this->session->userdata('id'));

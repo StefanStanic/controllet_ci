@@ -49,6 +49,8 @@ class dashboard extends CI_Controller{
             $data['transactions']=$this->dashboard_model->get_transactions();
             $data['income']=$this->dashboard_model->get_income();
             $data['budget']=$this->dashboard_model->get_budget();
+            $data['current_month_statistics']=$this->dashboard_model->get_current_month_transactions_by_type();
+            $data['previous_month_statistics']=$this->dashboard_model->get_previous_month_transactions_by_type();
             $this->load->view("dashboard",$data);
         }
         else{
@@ -68,7 +70,10 @@ class dashboard extends CI_Controller{
                 }
 
             }else echo "failed to find the bill";
-        }else echo "failed to pay";
+        }else {
+            echo '<h2 align="center">You are over your budget, you wont be able to pay this bill!</h2>';
+            echo '<h3 align="center"><a href="'.base_url().'dashboard">Go back to dashboard</a></h3>';
+        }
     }
 
     public function new_rec_bill_validation() {
