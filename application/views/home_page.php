@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home</title>
     <!--Linking style || linking JS-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css">
@@ -31,9 +31,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-brand-centered">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Testemonials</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="<?php echo base_url()?>home_page">Home</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About us</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php
@@ -101,10 +101,10 @@
     </a>
 </div><!-- /.carousel -->
 
-<div class="container">
+<div class="container" id="about">
     <h2 class="parts-title">About us</h2><br><br>
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
             <p align="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at deleniti eos exercitationem
                 expedita explicabo, fugit id illum ipsum laudantium, natus nemo omnis placeat sed, sequi. Beatae dignissimos fuga illo.
             </p>
@@ -186,7 +186,7 @@
                 </iframe>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="contact">
                 <h3 align="center"><i class="fa fa-map-marker" aria-hidden="true"></i></h3>
                 <h3 align="center">Subotica, SU 24000, SRBIJA</h3>
                 <h3 align="center"><i class="fa fa-phone" aria-hidden="true"></i></h3>
@@ -204,6 +204,31 @@
     <p align="center">© 2017 Copyright: Controllet.com </p>
 </div>
 
+<script>
+    $(document).ready(function(){
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
 
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+    });
+</script>
 </body>
 </html>

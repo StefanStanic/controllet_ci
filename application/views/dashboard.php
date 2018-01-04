@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Dashboard</title>
     <!--Linking style || linking JS-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -168,7 +168,6 @@
                         <h3 align="center">Statistics of previous month spendings!</h3>
                         <canvas id="previous_monthly_spending"></canvas>
                     </div>
-
                         <?php
                         //Current month spendings
                         $costPhone = 0;
