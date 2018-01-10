@@ -11,6 +11,11 @@ class home_page extends CI_Controller
     public function index (){
         $this->load->view("home_page.php");
     }
+    public function admin_login(){
+        $this->load->view("admin_login");
+    }
+
+    //Regular User login validation
     public function login_validation(){
         $this->form_validation->set_rules('email','Email','required|valid_email|trim|callback_validate_credentials');
         $this->form_validation->set_rules('password','Password','required|sha1|trim');
@@ -27,6 +32,8 @@ class home_page extends CI_Controller
             $this->load->view('login');
         }
     }
+
+
     public function register_validation() {
         $this->form_validation->set_rules('full_name','Full_name','required|trim');
         $this->form_validation->set_rules('email','Email','required|valid_email|trim|is_unique[users.email]');
@@ -102,6 +109,9 @@ class home_page extends CI_Controller
             return false;
         }
     }
+
+
+
 
     public function restricted(){
         $this->load->view('restricted');

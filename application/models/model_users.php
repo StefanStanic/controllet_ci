@@ -14,6 +14,20 @@ class Model_users extends CI_Model{
             return false;
         }
     }
+
+    public function admin_can_log_in(){
+        $this->db->where('username',$this->input->post('username'));
+        $this->db->where('password',sha1($this->input->post('password')));
+        $query=$this->db->get('admins');
+        $userId=$query->row();
+
+        if($query->num_rows()===1){
+            return $userId->username;
+        }
+        else{
+            return false;
+        }
+    }
     public function add_temp_user($key){
         $data=array(
             'full_name'=> $this->input->post('full_name'),
@@ -63,5 +77,10 @@ class Model_users extends CI_Model{
             return false;
         }
     }
+
+    public function add_new_category(){
+
+    }
+
 }
 ?>

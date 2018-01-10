@@ -15,7 +15,8 @@ class dashboard extends CI_Controller{
     }
 
     public function add_new_bill(){
-        $this->load->view('add_new_bill');
+        $data['categories']=$this->dashboard_model->get_categories();
+        $this->load->view('add_new_bill',$data);
     }
     public function add_my_income()
     {
@@ -26,6 +27,7 @@ class dashboard extends CI_Controller{
         $this->load->view('profile',$data);
     }
     public function update_bill($key){
+        $data['categories']=$this->dashboard_model->get_categories();
         $data['bill']=$this->dashboard_model->get_specific_bill($key);
         $this->load->view('update_bill',$data);
     }
@@ -86,7 +88,7 @@ class dashboard extends CI_Controller{
             $this->load->model('dashboard_model');
             $data=array(
                 "recurring_date"=>$this->input->post('recurring_date'),
-                "category"=>$this->input->post('category'),
+                "category_id"=>$this->input->post('category'),
                 "amount"=>$this->input->post('amount'),
                 "description"=>$this->input->post('description'),
                 "id_user"=>$this->input->post('id_user')

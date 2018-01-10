@@ -48,17 +48,22 @@
         <?php echo form_open('dashboard/new_rec_bill_validation');?>
 
             <?php
-            $options = array(
-                '1' => 'Phone',
-                '2' => 'Internet',
-                '3' => 'Electricity',
-                '4' => 'Water',
-                '5' => 'Mortgage',
-                '6' => 'Car Payment'
-            );
+//            $options = array(
+//                '1' => 'Phone',
+//                '2' => 'Internet',
+//                '3' => 'Electricity',
+//                '4' => 'Water',
+//                '5' => 'Mortgage',
+//                '6' => 'Car Payment'
+//            );
+
+            $option=array();
+            foreach($categories as $category) {
+                $option[$category->id_category] = $category->category_name;
+            }
 
             echo form_input(['name' => 'recurring_date', 'id' => 'recurring_date', 'class' => 'form-control', 'value' => set_value('recurring_date'), 'placeholder' => 'Recuring date']);
-            echo form_dropdown('category',$options,'Phone');
+            echo form_dropdown('category',$option,'0');
             echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount']);
             echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => set_value('description'), 'placeholder' => 'Description']);
             echo form_hidden('id_user',$this->session->userdata('id'));

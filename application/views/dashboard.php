@@ -74,7 +74,7 @@
                         foreach ($transactions as $row) {
                             echo '<div class="col-lg-6 col-sm-12">';
                             echo '<b>Date of transaction: </b><span>' . $row->date_of_transaction . '</span>' . '<br/>';
-                            echo '<b>Category: </b><span>' . $row->category . '</span>' . '<br/>';
+                            echo '<b>Category: </b><span>' . $row->category_name . '</span>' . '<br/>';
                             echo '<b>Transaction amount: </b><span>' . $row->transaction_amount . '</span>' . '<br/>' . '<br/>';
                             echo '</div>';
                         }
@@ -97,7 +97,7 @@
                         foreach ($bills as $row) {
                             echo '<div class="col-lg-6 col-sm-12">';
                             echo '<b>Date of bill: </b><span>' . $row->recurring_date . '</span>' . '<br/>';
-                            echo '<b>Category: </b> <span>' . $row->category . '</span>' . '<br/>';
+                            echo '<b>Category: </b> <span>' . $row->category_name . '</span>' . '<br/>';
                             echo '<b>Amount to pay: </b><span>' . $row->amount . ' eur</span>' . '<br/>';
                             echo '<b>Description: </b><span>' . $row->description . '</span>' . '<br/>' . '<br/>';
                             echo '<p><a class="btn btn-warning" role="button" href="' . base_url() . 'dashboard/pay_bill/' . $row->id_montly_bills . '">Clear Bill</a></p>';
@@ -169,6 +169,16 @@
                         <canvas id="previous_monthly_spending"></canvas>
                     </div>
                         <?php
+
+                        /*
+                         * Category id's
+                         * 1=>Water
+                         * 2=>Electricity
+                         * 3=>Mortgage
+                         * 4=>Phone
+                         * 5=>Internet
+                         * 6=>Car Payment
+                        */
                         //Current month spendings
                         $costPhone = 0;
                         $costInternet = 0;
@@ -179,15 +189,15 @@
                         foreach ($current_month_statistics as $row) {
                             foreach ($row as $object) {
                                 //                                echo gettype($object->transaction_amount);
-                                if ($object->category == "Phone") {
+                                if ($object->category == "4") {
                                     $costPhone += (int)$object->transaction_amount;
-                                } elseif ($object->category == "Internet") {
+                                } elseif ($object->category == "5") {
                                     $costInternet += (int)$object->transaction_amount;
-                                } elseif ($object->category == "Electricity") {
+                                } elseif ($object->category == "2") {
                                     $costElectricity += (int)$object->transaction_amount;
-                                } elseif ($object->category == "Water") {
+                                } elseif ($object->category == "1") {
                                     $costWater += (int)$object->transaction_amount;
-                                } elseif ($object->category == "Mortgage") {
+                                } elseif ($object->category == "3") {
                                     $costMortgage += (int)$object->transaction_amount;
                                 } else {
                                     $costCarPayment += (int)$object->transaction_amount;

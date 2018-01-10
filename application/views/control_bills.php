@@ -61,7 +61,7 @@
         foreach ($bills as $row){
             echo "<tr>";
             echo '<td>'.$row->recurring_date.'</td>';
-            echo '<td>'.$row->category.'</td>';
+            echo '<td>'.$row->category_name.'</td>';
             echo '<td>'.$row->amount.' eur</td>';
             echo '<td>'.$row->description.'</td>';
             echo '<td>'.'<a class="btn btn-warning" role="button" href="'.base_url().'dashboard/update_bill/'.$row->id_montly_bills.'">Edit</a>'.'</td>';

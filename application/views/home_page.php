@@ -70,7 +70,7 @@
             <img class="first-slide" src="<?php echo base_url();?>pictures/slider1.jpg" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="<?php echo base_url()?>user/register" role="button">Sign up today</a></p>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
             <img class="second-slide" src="<?php echo base_url();?>pictures/slider2.jpg" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#about" role="button">Learn More</a></p>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
             <img class="third-slide" src="<?php echo base_url();?>pictures/slider3.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Contact</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#contact" role="button">Contact</a></p>
                 </div>
             </div>
         </div>
