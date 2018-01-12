@@ -49,7 +49,12 @@
 </nav>
 <div class="container">
     <h3>Overview</h3>
-    <nav class="navbar navbar-default navbar-no" role="navigation">
+    <?php
+    if($this->agent->mobile()){
+        echo '<a href="'.base_url().'dashboard/custom_bill"><p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a bill</button></p></a>';
+    }else{
+      echo '
+      <nav class="navbar navbar-default navbar-no" role="navigation">
         <div class="container">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-brand-centered">
@@ -61,7 +66,9 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
-    </nav>
+    </nav>';
+    }
+    ?>
     <div class="row">
         <div class="col-lg-6">
             <div class="panel panel-default heightFix">

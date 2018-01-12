@@ -22,6 +22,9 @@ class dashboard extends CI_Controller{
     {
         $this->load->view('my_income');
     }
+    public function custom_bill(){
+        $this->load->view('custom_bill');
+    }
     public function profile(){
         $data['profile']=$this->dashboard_model->get_user_details();
         $this->load->view('profile',$data);
@@ -123,6 +126,34 @@ class dashboard extends CI_Controller{
             );
             if($this->dashboard_model->add_new_income($data)){
                 redirect('dashboard');
+            }
+            else{
+                redirect('dashboard');
+            }
+        }
+        else{
+            redirect('dashboard');
+        }
+
+    }
+    //custom bill
+    public function new_custom_bill_validation() {
+        $this->form_validation->set_rules('amount','amount','required|trim');
+        $this->form_validation->set_rules('description','description','required|trim');
+
+        if($this->form_validation->run()) {
+            $this->load->model('dashboard_model');
+            $date=new DateTime();
+            $insertDate=$date->format("y-m-d");
+            $data=array(
+                "date_added"=>$insertDate,
+                "category"=>$this->input->post('category'),
+                "amount"=>$this->input->post('amount'),
+                "description"=>$this->input->post('description'),
+                "id_user"=>$this->input->post('id_user')
+            );
+            if($this->dashboard_model->add_custom_bill($data)){
+                redirect('dashboard/control_bills');
             }
             else{
                 redirect('dashboard');

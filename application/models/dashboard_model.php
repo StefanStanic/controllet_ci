@@ -186,6 +186,17 @@ class dashboard_model extends CI_Model
                 return false;
             }
         }
+        public function add_custom_bill($data){
+            $id=$data['id_user'];
+            $this->db->where('id_user',$id);
+            $query=$this->db->insert('custom_bill',$data);
+            if($query){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
 
         public function add_new_income($data){
             $id=$data['id_user'];

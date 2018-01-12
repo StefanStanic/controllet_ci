@@ -68,6 +68,7 @@ if(isset($categories)){
   </table>';
     echo form_open('admins/add_category');
     echo form_input(['name' => 'category', 'id' => 'category', 'class' => 'form-control', 'value' => set_value('Category'), 'placeholder' => 'Enter new category']);
+    echo '<br/>';
     echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add category</button></p>';
     form_close();
     ?>

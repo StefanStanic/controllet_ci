@@ -30,8 +30,8 @@ USE `kontrola_troskova`;
 
 CREATE TABLE `admins` (
   `id_admin` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
+  `username` varchar(100) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
