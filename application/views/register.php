@@ -42,7 +42,8 @@
         echo form_input(['name' => 'phone', 'id' => 'phone', 'class' => 'form-control', 'value' => set_value('phone'), 'placeholder' => 'Phone']);
         echo form_input(['name' => 'city', 'id' => 'city', 'class' => 'form-control', 'value' => set_value('city'), 'placeholder' => 'City']);
         echo form_input(['name' => 'country', 'id' => 'country', 'class' => 'form-control', 'value' => set_value('country'), 'placeholder' => 'Country']);
-        echo '<input type="file" name="userpicture"/>';
+        echo '<p align="center">Unesite profilnu sliku:</p>';
+        echo '<p align="center"><input type="file" name="userpicture"/></p>';
         echo '<br/>';
         echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Register</button></p>';
         ?>
