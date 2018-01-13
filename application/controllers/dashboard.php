@@ -48,6 +48,10 @@ class dashboard extends CI_Controller{
         $data['bills']=$this->dashboard_model->get_bills();
         $this->load->view('control_bills',$data);
     }
+    public function one_time_bills(){
+        $data['onetimebills']=$this->dashboard_model->get_onetime_bills();
+        $this->load->view('one_time_bills',$data);
+    }
     public function index(){
         if($this->session->userdata('is_logged_in')===1){
             $data['bills']=$this->dashboard_model->get_bills();

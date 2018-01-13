@@ -18,6 +18,13 @@ class dashboard_model extends CI_Model
         return $query->result();
     }
 
+    public function get_onetime_bills(){
+        $userId = $this->session->userdata('id');
+        $this->db->where('id_user',$userId);
+        $query=$this->db->get('custom_bill');
+        return $query->result();
+    }
+
     public function get_transactions(){
         $datenow=date('Y-m-d');
         $date7=date('Y-m-d', strtotime('-1 week'));
@@ -190,10 +197,16 @@ class dashboard_model extends CI_Model
             $id=$data['id_user'];
             $this->db->where('id_user',$id);
             $query=$this->db->insert('custom_bill',$data);
-            if($query){
+            $transactions=array(
+                "date_of_transaction"=>date("Y-m-d"),
+                "category"=>1,
+                "transaction_amount"=>$data['amount'],
+                "id_user"=>$this->session->userdata('id')
+            );
+            $query2=$this->db->insert('transactions',$transactions);
+            if($query and $query2){
                 return true;
-            }
-            else{
+            }else{
                 return false;
             }
         }

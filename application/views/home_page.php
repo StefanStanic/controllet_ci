@@ -105,21 +105,13 @@
     <h2 class="parts-title">About us</h2><br><br>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
-            <p align="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at deleniti eos exercitationem
-                expedita explicabo, fugit id illum ipsum laudantium, natus nemo omnis placeat sed, sequi. Beatae dignissimos fuga illo.
-            </p>
+            <p align="center">Controllet was started 2018 by two students who needed to know how to easly
+            manage their own expenses while living in a small town in Subotica, Serbia.</p>
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p align="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at deleniti eos exercitationem
-                expedita explicabo, fugit id illum ipsum laudantium, natus nemo omnis placeat sed, sequi. Beatae dignissimos fuga illo.
-            </p>
-        </div>
-    </div>
 
-    <br><br><br><br><br>
+    <br><br>
     <h2 class="parts-title">Best Features</h2><br><br>
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -127,9 +119,9 @@
                 <img src="<?php echo base_url();?>pictures/calculator.jpeg" alt="...">
                 <div class="caption">
                     <h3 align="center">Expenses</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos magni neque ratione sed!
-                        Accusantium aspernatur consequuntur cum eligendi, eum, inventore, mollitia
-                        nam nisi nobis odio odit pariatur placeat quod veniam?
+                    <p>
+                        Controllet lets you manage your monthly expenses based on your income,
+                        and how much you earn per month.
                     </p>
                 </div>
             </div>
@@ -141,9 +133,9 @@
                 <img src="<?php echo base_url();?>pictures/use_anywhere.jpeg" alt="...">
                 <div class="caption">
                     <h3 align="center">Convinient Design</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos magni neque ratione sed!
-                        Accusantium aspernatur consequuntur cum eligendi, eum, inventore, mollitia
-                        nam nisi nobis odio odit pariatur placeat quod veniam?
+                    <p>
+                        Controllet design matches current trends and is easy to use. It is optimized
+                        for both pc and hand held devices.
                     </p>
                 </div>
             </div>
@@ -155,9 +147,9 @@
                 <img src="<?php echo base_url();?>pictures/team.jpeg" alt="...">
                 <div class="caption">
                     <h3 align="center">Top-class Team</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos magni neque ratione sed!
-                        Accusantium aspernatur consequuntur cum eligendi, eum, inventore, mollitia
-                        nam nisi nobis odio odit pariatur placeat quod veniam?
+                    <p>
+                        Controllet teams work day and night to bring you a quality expirience and
+                        are avaliable most of the day for you to help!
                     </p>
                 </div>
             </div>
@@ -168,9 +160,9 @@
                 <img src="<?php echo base_url();?>pictures/24_hour_support.jpg" alt="...">
                 <div class="caption">
                     <h3 align="center">24/7 Team</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos magni neque ratione sed!
-                        Accusantium aspernatur consequuntur cum eligendi, eum, inventore, mollitia
-                        nam nisi nobis odio odit pariatur placeat quod veniam?
+                    <p>
+                        Controllet also has a 24/7 on site team to help with any of the problems
+                        you may face using controllet!
                     </p>
                 </div>
             </div>

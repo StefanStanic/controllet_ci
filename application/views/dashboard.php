@@ -52,8 +52,8 @@
     <?php
     if($this->agent->mobile()){
         echo '<a href="'.base_url().'dashboard/custom_bill"><p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a bill</button></p></a>';
-    }else{
-      echo '
+        echo '<a href="'.base_url().'dashboard/one_time_bills"><p align="center"><button class="btn btn-lg btn-primary" type="submit">Show onetime bills</button></p></a>';
+    }else{?>
       <nav class="navbar navbar-default navbar-no" role="navigation">
         <div class="container">
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,10 +63,12 @@
                     <li><a href="<?php echo base_url(); ?>dashboard/add_new_bill"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp Add a new bill</a></li>
                     <li><a href="<?php echo base_url(); ?>dashboard/control_bills"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp All my bills</a></li>
                     <li><a href="<?php echo base_url(); ?>dashboard/add_my_income"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;Add My Income</a></li>
+                    <li><a href="<?php echo base_url(); ?>dashboard/one_time_bills"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;All onetime transactions</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
-    </nav>';
+    </nav>
+    <?php
     }
     ?>
     <div class="row">
