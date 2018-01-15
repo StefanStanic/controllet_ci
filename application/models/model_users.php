@@ -78,9 +78,36 @@ class Model_users extends CI_Model{
         }
     }
 
-    public function add_new_category(){
-
+    // for reseting the password
+    public function email_exists($email){
+        $this->db->where('email',$email);
+        $query=$this->db->get('users');
+        $result=$query->result();
+        if($query){
+            return $result;
+        }else{
+            return false;
+        }
     }
+    public function is_reset_key_valid($email,$key){
+        if(md5($email.'mojsalt123')==$key){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function update_password($password,$email){
 
+        $data=array(
+            'password'=>$password
+        );
+        $this->db->where('email',$email);
+        $query=$this->db->update('users',$data);
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 ?>

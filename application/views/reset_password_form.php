@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>login</title>
+    <title>Reset password</title>
     <!--Linking style || linking JS-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css">
@@ -33,19 +33,13 @@
 </nav>
 <div class="container">
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
-    <?php echo form_open('/home_page/login_validation');?>
-       <?php
-        echo form_input(['name' => 'email', 'id' => 'email', 'class' => 'form-control', 'value' => set_value('email'), 'placeholder' => 'Email']);
-        echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']);
-        echo '<br/>';
-        echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Sign in</button></p>';
+    <?php echo form_open('/users/reset_password_form_check');?>
+    <?php
+    echo form_hidden('email',$email);
+    echo form_password(['name' => 'password', 'id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']);
+    echo form_password(['name' => 'cpassword', 'id' => 'cpassword', 'class' => 'form-control', 'placeholder' => 'Repeat Password']);
+    echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Reset Password</button></p>';
     ?>
-    <?php echo form_close();?>
-    <?php echo '<p align="center">'.validation_errors();'</p> '?>
-    <?php echo '<p align="center">Dont have an account? Register<a style="color: #2e6da4" href="';?><?php echo base_url();?><?php echo 'users/register"> here</a></p>';?>
-    <?php echo '<p align="center">Forgot your password? Reset <a style="color: #2e6da4" href="';?><?php echo base_url();?><?php echo 'Users/forgotten_password"> here</a></p>';?>
-    <?php echo '</div>'?>
-
 </div>
 </body>
 </html>

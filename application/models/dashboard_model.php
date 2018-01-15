@@ -224,7 +224,7 @@ class dashboard_model extends CI_Model
             $this->db->where('id_user',$userID);
             $query1=$this->db->get('budget');
             $row1=$query1->row();
-            echo $row1->budget_amount;
+//            echo $row1->budget_amount;
             $transactions=array(
                 "date_of_transaction"=>date("Y-m-d"),
                 "category"=>1,
