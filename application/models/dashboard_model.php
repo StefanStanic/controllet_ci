@@ -61,6 +61,29 @@ class dashboard_model extends CI_Model
         return $query->result();
     }
 
+    public function get_selected_data_months_1($cat1,$date1){
+        $userId = $this->session->userdata('id');
+        $this->db->select("*");
+        $this->db->from("transactions");
+        $this->db->join('category','category.id_category=transactions.category');
+        $this->db->where('id_user',$userId);
+        $this->db->where('category',$cat1);
+        $this->db->where('MONTH(date_of_transaction)',$date1);
+        return $this->db->get()->result();
+    }
+
+    public function get_selected_data_months_2($cat2,$date2){
+        $userId = $this->session->userdata('id');
+        $this->db->select("*");
+        $this->db->from("transactions");
+        $this->db->join('category','category.id_category=transactions.category');
+        $this->db->where('id_user',$userId);
+        $this->db->where('category',$cat2);
+        $this->db->where('MONTH(date_of_transaction)',$date2);
+        return $this->db->get()->result();
+    }
+
+
     public function get_previous_month_transactions_by_type(){
         $userId = $this->session->userdata('id');
         $pastMonth = (int) date('n', strtotime('-1 months'));

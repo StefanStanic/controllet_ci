@@ -166,126 +166,98 @@
         <div class="col-lg-12">
             <div class="panel panel-default heightFix">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Statistics</h3>
+                    <h3 align="center" class="panel-title">Statistics</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="col-lg-6">
-                        <h3 align="center">Statistics of current month spendings!</h3>
-                        <canvas id="current_monthly_spending"></canvas>
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 align="center">Statistics of previous month spendings!</h3>
-                        <canvas id="previous_monthly_spending"></canvas>
-                    </div>
+                    <h3 align="center">Compare two months</h3><br><br>
+                        <?php echo form_open('dashboard/get_selected_data');?>
                         <?php
-
-                        /*
-                         * Category id's
-                         * 1=>Water
-                         * 2=>Electricity
-                         * 3=>Mortgage
-                         * 4=>Phone
-                         * 5=>Internet
-                         * 6=>Car Payment
-                        */
-                        //Current month spendings
-                        $costPhone = 0;
-                        $costInternet = 0;
-                        $costElectricity = 0;
-                        $costWater = 0;
-                        $costMortgage = 0;
-                        $costCarPayment = 0;
-                        foreach ($current_month_statistics as $row) {
-                            foreach ($row as $object) {
-                                //                                echo gettype($object->transaction_amount);
-                                if ($object->category == "4") {
-                                    $costPhone += (int)$object->transaction_amount;
-                                } elseif ($object->category == "5") {
-                                    $costInternet += (int)$object->transaction_amount;
-                                } elseif ($object->category == "2") {
-                                    $costElectricity += (int)$object->transaction_amount;
-                                } elseif ($object->category == "1") {
-                                    $costWater += (int)$object->transaction_amount;
-                                } elseif ($object->category == "3") {
-                                    $costMortgage += (int)$object->transaction_amount;
-                                } else {
-                                    $costCarPayment += (int)$object->transaction_amount;
-                                }
-                            }
+                        $option=array();
+                        foreach($categories as $category) {
+                            $option[$category->id_category] = $category->category_name;
                         }
-                        //previous month
-                        $prevPhone = 0;
-                        $prevInternet = 0;
-                        $prevElectricity = 0;
-                        $prevWater = 0;
-                        $prevMortgage = 0;
-                        $prevCarPayment = 0;
-                            foreach ($previous_month_statistics as $row) {
-                                foreach ($row as $object) {
-                                    //                                echo gettype($object->transaction_amount);
-                                    if ($object->category == "Phone") {
-                                        $prevPhone += (int)$object->transaction_amount;
-                                    } elseif ($object->category == "Internet") {
-                                        $prevInternet += (int)$object->transaction_amount;
-                                    } elseif ($object->category == "Electricity") {
-                                        $prevElectricity += (int)$object->transaction_amount;
-                                    } elseif ($object->category == "Water") {
-                                        $prevWater += (int)$object->transaction_amount;
-                                    } elseif ($object->category == "Mortgage") {
-                                        $prevMortgage += (int)$object->transaction_amount;
-                                    } else {
-                                        $prevCarPayment += (int)$object->transaction_amount;
-                                    }
-                                }
-                        }
-
+                        $date=array(
+                            '01'=>"January",
+                            '02'=>"February",
+                            '03'=>"March",
+                            '04'=>"April",
+                            '05'=>"May",
+                            '06'=>"June",
+                            '07'=>"July",
+                            '08'=>"August",
+                            '09'=>"Semptember",
+                            '10'=>"October",
+                            '11'=>"November",
+                            '12'=>"December"
+                        );
                         ?>
+                        <div class="col-lg-6">
+                            <?php
+                            echo '<p align="center">';
+                            echo form_dropdown('category1',$option,'0','id="cat1"');
+                            echo form_dropdown('date1',$date,'0','id="date1"');
+                            echo '</p>';
+                            ?>
+                            <h3 align="center">In this month you spent:</h3>
+                            <p align="center" style="font-size: 15pt" id="Amount1"></p>
+                        </div>
+                        <div class="col-lg-6">
+                            <?php
+                            echo '<p align="center">';
+                            echo form_dropdown('category2',$option,'0','id="cat2"');
+                            echo form_dropdown('date2',$date,'0','id="date2"');
+                            echo '</p>';
+                            ?>
+                            <h3 align="center">In this month you spent:</h3>
+                            <p align="center" style="font-size: 15pt" id="Amount2"></p>
+                        </div>
+                    <br><br><br>
+                        <?php echo '<p align="center">'.form_submit('submit', 'Submit', "class='submit'").'</p>'; ?>
+                        <?php echo form_close();?>
+                        <?php echo validation_errors(); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    var ctxP = document.getElementById("current_monthly_spending").getContext('2d');
-    var myPieChart = new Chart(ctxP, {
-        type: 'pie',
-        data: {
-            labels: ["Phone", "Internet", "Electricity", "Water", "Mortgage", "Car Payment", "Available to spend"],
-            datasets: [
-                {
-                    data: [<?php echo $costPhone?>, <?php echo $costInternet?>, <?php echo $costElectricity?>, <?php echo $costWater?>,
-                        <?php echo $costMortgage ?>,<?php echo $costCarPayment ?>,<?php echo $tot_budget?>],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#4D5222", "#FFCC22"],
-                    hoverBackgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#4D5222", "#FFCC22"]
-                }
-            ]
-        },
-        options: {
-            responsive: true
-        }
-    });
-</script>
+<script type="text/javascript">
 
-<script>
-    var ctxP = document.getElementById("previous_monthly_spending").getContext('2d');
-    var myPieChart = new Chart(ctxP, {
-        type: 'pie',
-        data: {
-            labels: ["Phone", "Internet", "Electricity", "Water", "Mortgage", "Car Payment"],
-            datasets: [
-                {
-                    data: [<?php echo $prevPhone?>, <?php echo $prevInternet?>, <?php echo $prevElectricity?>, <?php echo $prevWater?>,
-                        <?php echo $prevMortgage ?>,<?php echo $prevCarPayment ?>],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#4D5222"],
-                    hoverBackgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#4D5222"]
+    // Ajax post
+    $(document).ready(function() {
+        $(".submit").click(function(event) {
+            event.preventDefault();
+            var cat1 = $("#cat1").val();
+            var date1 = $("#date1").val();
+            var cat2 = $("#cat2").val();
+            var date2 = $("#date2").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>" + "dashboard/get_selected_data",
+                dataType: 'json',
+                data: {
+                    category1: cat1,
+                    category2: cat2,
+                    date1:date1,
+                    date2:date2
+                },
+                success: function(res) {
+                    if (res)
+                    {
+                        var costSummary1=0;
+                        var costSummary2=0;
+                        $.each(res[0], function(index, value){
+                            costSummary1+=parseInt(value.transaction_amount);
+                        });
+                        $.each(res[1], function(index, value){
+                            costSummary2+=parseInt(value.transaction_amount);
+                        });
+                        $('#Amount1').text(costSummary1+" eur");
+                        $('#Amount2').text(costSummary2+" eur");
+                    }
                 }
-            ]
-        },
-        options: {
-            responsive: true
-        }
+            });
+        });
     });
 </script>
 </body>

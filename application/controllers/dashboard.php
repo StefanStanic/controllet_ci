@@ -52,12 +52,29 @@ class dashboard extends CI_Controller{
         $data['onetimebills']=$this->dashboard_model->get_onetime_bills();
         $this->load->view('one_time_bills',$data);
     }
+
+    public function get_selected_data(){
+        $cat1=$this->input->post('category1');
+        $cat2=$this->input->post('category2');
+        $date1=$this->input->post('date1');
+        $date2=$this->input->post('date2');
+
+
+        $this->load->model("dashboard_model");
+        $data1=$this->dashboard_model->get_selected_data_months_1($cat1,$date1);
+        $data2=$this->dashboard_model->get_selected_data_months_2($cat2,$date2);
+        $data=array($data1,$data2);
+        echo json_encode($data);
+
+    }
+
     public function index(){
         if($this->session->userdata('is_logged_in')===1){
             $data['bills']=$this->dashboard_model->get_bills();
             $data['transactions']=$this->dashboard_model->get_transactions();
             $data['income']=$this->dashboard_model->get_income();
             $data['budget']=$this->dashboard_model->get_budget();
+            $data['categories']=$this->dashboard_model->get_categories();
             $data['current_month_statistics']=$this->dashboard_model->get_current_month_transactions_by_type();
             $data['previous_month_statistics']=$this->dashboard_model->get_previous_month_transactions_by_type();
             $this->load->view("dashboard",$data);
