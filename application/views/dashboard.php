@@ -173,6 +173,7 @@
                         <?php echo form_open('dashboard/get_selected_data');?>
                         <?php
                         $option=array();
+                        $option[1]="custom";
                         foreach($categories as $category) {
                             $option[$category->id_category] = $category->category_name;
                         }

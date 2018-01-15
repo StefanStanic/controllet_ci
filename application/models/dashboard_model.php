@@ -57,7 +57,7 @@ class dashboard_model extends CI_Model
     }
 
     public function get_categories(){
-        $query=$this->db->query("SELECT * from category order by id_category");
+        $query=$this->db->query("SELECT * from category order by id_category LIMIT 100 OFFSET 1");
         return $query->result();
     }
 
@@ -220,15 +220,23 @@ class dashboard_model extends CI_Model
             $id=$data['id_user'];
             $this->db->where('id_user',$id);
             $query=$this->db->insert('custom_bill',$data);
+            $userID=$this->session->userdata('id');
+            $this->db->where('id_user',$userID);
+            $query1=$this->db->get('budget');
+            $row1=$query1->row();
+            echo $row1->budget_amount;
             $transactions=array(
                 "date_of_transaction"=>date("Y-m-d"),
                 "category"=>1,
                 "transaction_amount"=>$data['amount'],
                 "id_user"=>$this->session->userdata('id')
             );
+            if($data['amount']>$row1->budget_amount){
+                return false;
+            }
             $query2=$this->db->insert('transactions',$transactions);
             if($query and $query2){
-                return true;
+                return $data['amount'];
             }else{
                 return false;
             }

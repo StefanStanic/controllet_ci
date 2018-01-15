@@ -173,11 +173,15 @@ class dashboard extends CI_Controller{
                 "description"=>$this->input->post('description'),
                 "id_user"=>$this->input->post('id_user')
             );
-            if($this->dashboard_model->add_custom_bill($data)){
-                redirect('dashboard/control_bills');
+            if($amountPay=$this->dashboard_model->add_custom_bill($data)){
+                if($this->dashboard_model->update_budget_after_pay($amountPay)){
+                    redirect('dashboard/one_time_bills');
+                }
+
             }
             else{
-                redirect('dashboard');
+                echo '<h2 align="center">You are over your budget, you wont be able to pay this bill!</h2>';
+                echo '<h3 align="center"><a href="'.base_url().'dashboard">Go back to dashboard</a></h3>';
             }
         }
         else{

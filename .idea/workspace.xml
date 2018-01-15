@@ -45,8 +45,8 @@
       <file leaf-file-name="Dashboard.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+            <state relative-caret-position="-25">
+              <caret line="184" column="13" lean-forward="true" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -55,28 +55,29 @@
       <file leaf-file-name="dashboard_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/dashboard_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="71" column="42" lean-forward="true" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
+            <state relative-caret-position="453">
+              <caret line="233" column="15" lean-forward="false" selection-start-line="233" selection-start-column="15" selection-end-line="233" selection-end-column="15" />
               <folding>
-                <marker date="1515976121555" expanded="true" signature="1200:1341" ph="SELECT * fro... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1200:1349" ph="SELECT * fro... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1200:1350" ph="SELECT * fro... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1578:1738" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1783:1893" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1783:1896" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1783:1943" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="1991:2151" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="2193:2353" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="2398:2558" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="2605:2765" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="3166:3188" ph="SELECT * fro... category" />
-                <marker date="1515976121555" expanded="true" signature="3166:3209" ph="SELECT * fro... category" />
-                <marker date="1515976121555" expanded="true" signature="4472:4676" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="4721:4925" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="4973:5177" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="5219:5423" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="5468:5672" ph="SELECT trans... transactions" />
-                <marker date="1515976121555" expanded="true" signature="5719:5923" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1200:1341" ph="SELECT * fro... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1200:1349" ph="SELECT * fro... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1200:1350" ph="SELECT * fro... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1578:1738" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1783:1893" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1783:1896" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1783:1943" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="1991:2151" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="2193:2353" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="2398:2558" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="2605:2765" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="3166:3188" ph="SELECT * fro... category" />
+                <marker date="1515981823371" expanded="true" signature="3166:3209" ph="SELECT * fro... category" />
+                <marker date="1515981823371" expanded="true" signature="3166:3228" ph="SELECT * fro... category" />
+                <marker date="1515981823371" expanded="true" signature="4491:4695" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="4740:4944" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="4992:5196" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="5238:5442" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="5487:5691" ph="SELECT trans... transactions" />
+                <marker date="1515981823371" expanded="true" signature="5738:5942" ph="SELECT trans... transactions" />
               </folding>
             </state>
           </provider>
@@ -85,8 +86,8 @@
       <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3825">
-              <caret line="255" column="62" lean-forward="false" selection-start-line="255" selection-start-column="62" selection-end-line="255" selection-end-column="62" />
+            <state relative-caret-position="165">
+              <caret line="185" column="14" lean-forward="false" selection-start-line="185" selection-start-column="14" selection-end-line="185" selection-end-column="14" />
               <folding>
                 <element signature="e#3317#3323#0#HTML" expanded="true" />
                 <element signature="e#3323#3329#0#HTML" expanded="true" />
@@ -106,8 +107,8 @@
       <file leaf-file-name="add_new_bill.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/add_new_bill.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="70" column="114" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="114" />
+            <state relative-caret-position="0">
+              <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -117,11 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>../../</find>
-      <find>login_va</find>
-      <find>register_user</find>
-      <find>$key</find>
-      <find>add_user</find>
       <find>$bills</find>
       <find>new</find>
       <find>return</find>
@@ -132,7 +128,6 @@
       <find>restricted</find>
       <find>failed</find>
       <find>bills</find>
-      <find>pay</find>
       <find>budget</find>
       <find>curre</find>
       <find>get_bills</find>
@@ -144,9 +139,15 @@
       <find>detele_specific_bill</find>
       <find>get_catego</find>
       <find>agent</find>
-      <find>custom</find>
       <find>date(&quot;Y-m-d&quot;)</find>
       <find>categories</find>
+      <find>onetime</find>
+      <find>custom</find>
+      <find>amountPay</find>
+      <find>add_cus</find>
+      <find>pay</find>
+      <find>cust</find>
+      <find>pay_my</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;?php echo base_url();?&gt;</replace>
@@ -360,12 +361,12 @@
       <workItem from="1515714555047" duration="6051000" />
       <workItem from="1515744828353" duration="476000" />
       <workItem from="1515845027190" duration="3009000" />
-      <workItem from="1515970016693" duration="9824000" />
+      <workItem from="1515970016693" duration="11515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135444000" />
+    <option name="totallyTimeSpent" value="137135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="823" extended-state="6" />
@@ -721,54 +722,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Dashboard.php">
+    <entry file="file://$PROJECT_DIR$/application/views/add_new_bill.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="66" column="32" lean-forward="true" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
+        <state relative-caret-position="0">
+          <caret line="0" column="33" lean-forward="true" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/dashboard_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="71" column="42" lean-forward="true" selection-start-line="71" selection-start-column="42" selection-end-line="71" selection-end-column="42" />
+        <state relative-caret-position="453">
+          <caret line="233" column="15" lean-forward="false" selection-start-line="233" selection-start-column="15" selection-end-line="233" selection-end-column="15" />
           <folding>
-            <marker date="1515976121555" expanded="true" signature="1200:1341" ph="SELECT * fro... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1200:1349" ph="SELECT * fro... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1200:1350" ph="SELECT * fro... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1578:1738" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1783:1893" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1783:1896" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1783:1943" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="1991:2151" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="2193:2353" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="2398:2558" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="2605:2765" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="3166:3188" ph="SELECT * fro... category" />
-            <marker date="1515976121555" expanded="true" signature="3166:3209" ph="SELECT * fro... category" />
-            <marker date="1515976121555" expanded="true" signature="4472:4676" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="4721:4925" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="4973:5177" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="5219:5423" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="5468:5672" ph="SELECT trans... transactions" />
-            <marker date="1515976121555" expanded="true" signature="5719:5923" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1200:1341" ph="SELECT * fro... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1200:1349" ph="SELECT * fro... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1200:1350" ph="SELECT * fro... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1578:1738" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1783:1893" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1783:1896" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1783:1943" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="1991:2151" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="2193:2353" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="2398:2558" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="2605:2765" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="3166:3188" ph="SELECT * fro... category" />
+            <marker date="1515981823371" expanded="true" signature="3166:3209" ph="SELECT * fro... category" />
+            <marker date="1515981823371" expanded="true" signature="3166:3228" ph="SELECT * fro... category" />
+            <marker date="1515981823371" expanded="true" signature="4491:4695" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="4740:4944" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="4992:5196" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="5238:5442" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="5487:5691" ph="SELECT trans... transactions" />
+            <marker date="1515981823371" expanded="true" signature="5738:5942" ph="SELECT trans... transactions" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/add_new_bill.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/Dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="70" column="114" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="114" />
+        <state relative-caret-position="-25">
+          <caret line="184" column="13" lean-forward="true" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/dashboard.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3825">
-          <caret line="255" column="62" lean-forward="false" selection-start-line="255" selection-start-column="62" selection-end-line="255" selection-end-column="62" />
+        <state relative-caret-position="165">
+          <caret line="185" column="14" lean-forward="false" selection-start-line="185" selection-start-column="14" selection-end-line="185" selection-end-column="14" />
           <folding>
             <element signature="e#3317#3323#0#HTML" expanded="true" />
             <element signature="e#3323#3329#0#HTML" expanded="true" />
