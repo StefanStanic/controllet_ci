@@ -70,6 +70,15 @@
     </tbody>
   </table>';
     ?>
+    <?php if(isset($_GET['custom_bill_add'])){
+        if($_GET['custom_bill_add']=='no'){
+            echo '<p align="center" style="color:red">One time bill could not be added</p>';
+        }
+        else{
+            echo '<p align="center" style="color:green">One time bill was succesfully added</p>';
+        }
+    }
+    ?>
 </div>
 </body>
 </html>

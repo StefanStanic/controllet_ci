@@ -146,10 +146,10 @@ class dashboard extends CI_Controller{
                 "id_user"=>$this->input->post('id_user')
             );
             if($this->dashboard_model->add_new_income($data)){
-                redirect('dashboard');
+                redirect('dashboard'.'?add_new_income=ok');
             }
             else{
-                redirect('dashboard');
+                redirect('dashboard'.'?add_new_income=no');
             }
         }
         else{
@@ -175,7 +175,7 @@ class dashboard extends CI_Controller{
             );
             if($amountPay=$this->dashboard_model->add_custom_bill($data)){
                 if($this->dashboard_model->update_budget_after_pay($amountPay)){
-                    redirect('dashboard/one_time_bills');
+                    redirect('dashboard/one_time_bills'.'?custom_bill_add=ok');
                 }
 
             }

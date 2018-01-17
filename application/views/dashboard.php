@@ -90,7 +90,6 @@
                     } else {
                         echo '<h3 align="center">No transaction data!</h3>';
                     }
-
                     ?>
                 </div>
             </div>
@@ -176,6 +175,15 @@
                         echo '<h3 align="center">No income set, please set an income at add income page!</h3>';
                     }
 
+                    ?>
+                    <?php if(isset($_GET['add_new_income'])){
+                        if($_GET['add_new_income']=='no'){
+                            echo '<p align="center" style="color:red">Income could not be added</p>';
+                        }
+                        else{
+                            echo '<p align="center" style="color:green">Income was succesfully added</p>';
+                        }
+                    }
                     ?>
                 </div>
             </div>
