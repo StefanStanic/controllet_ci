@@ -77,14 +77,14 @@ class home_page extends CI_Controller
              $this->email->to($this->input->post('email'));
              $this->email->subject("Confirm your account.");
              $message="<p>Thank you for signing up for Controllet</p>";
-             $message.="<p><a href='".base_url()."home_page/register_user/$key'>Click here</a> to confirm your account./p>";
+             $message.="<p><a href='".base_url()."home_page/register_user/$key'>Click here</a> to confirm your account.</p>";
              $this->email->message($message);
 
 
              if($this->model_users->add_temp_user($key)){
                  if($this->email->send()){
                      redirect('users/login');
-                 }redirect('users/register'.'email_sent=no');
+                 }redirect('users/register'.'?email_sent=no');
              }redirect('users/register'.'?add_user=no');
              //add them to database with   flag 0
          }
