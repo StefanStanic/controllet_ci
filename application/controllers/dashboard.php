@@ -92,10 +92,10 @@ class dashboard extends CI_Controller{
             if($amountPay=$this->dashboard_model->pay_my_bills($key)){
                 $id_user=$this->session->userdata('id');
                 if($this->dashboard_model->update_budget_after_pay($amountPay)){
-                    redirect("dashboard");
+                    redirect('dashboard'.'?rec_bill_payed=ok');
                 }
 
-            }else echo "failed to find the bill";
+            }redirect('dashboard'.'?rec_bill_payed=no');
         }else {
             echo '<h2 align="center">You are over your budget, you wont be able to pay this bill!</h2>';
             echo '<h3 align="center"><a href="'.base_url().'dashboard">Go back to dashboard</a></h3>';
@@ -118,10 +118,10 @@ class dashboard extends CI_Controller{
                 "id_user"=>$this->input->post('id_user')
             );
             if($this->dashboard_model->add_re_bill($data)){
-                redirect('dashboard');
+                redirect('dashboard'.'?rec_bill_add=ok');
             }
             else{
-                redirect('dashboard');
+                redirect('dashboard'.'?rec_bill_add=no');
             }
         }
         else{

@@ -29,7 +29,7 @@ class home_page extends CI_Controller
             redirect("dashboard");
         }
         else{
-            $this->load->view('login');
+            redirect('users/login'.'?user_login=no');
         }
     }
 
@@ -84,8 +84,8 @@ class home_page extends CI_Controller
              if($this->model_users->add_temp_user($key)){
                  if($this->email->send()){
                      redirect('users/login');
-                 }else echo "email could not be sent";
-             }else echo "Problem adding to database";
+                 }redirect('users/register'.'email_sent=no');
+             }redirect('users/register'.'?add_user=no');
              //add them to database with   flag 0
          }
          else{
@@ -105,7 +105,7 @@ class home_page extends CI_Controller
         }
         else{
             $this->form_validation->set_message('validate_credentials','Incorrect username/password or you did not activate
-            your account! Check your email.');
+            your account!');
             return false;
         }
     }

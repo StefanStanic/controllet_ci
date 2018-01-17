@@ -44,7 +44,7 @@ class admins extends CI_Controller
             redirect("admins/admin_dashboard");
         }
         else{
-            $this->load->view('admin_login');
+            redirect('admins/admin_login'.'?admin_login=no');
         }
     }
 
@@ -72,10 +72,10 @@ class admins extends CI_Controller
                 "category_name"=>$this->input->post('category'),
             );
             if($this->dashboard_model->add_new_category($data)){
-                redirect('admins/admin_dashboard');
+                redirect('admins/admin_dashboard'.'?category_added=ok');
             }
             else{
-                redirect('admins/admin_dashboard');
+                redirect('admins/admin_dashboard'.'?category_added=no');
             }
         }
     }
@@ -83,9 +83,9 @@ class admins extends CI_Controller
         $this->db->where('id_category',$key);
         $query=$this->db->delete('category');
         if($query){
-            redirect('admins/admin_dashboard');
+            redirect('admins/admin_dashboard'.'?category_deleted=ok');
         }else{
-            redirect('admins/admin_dashboard');
+            redirect('admins/admin_dashboard'.'?category_deleted=no');
         }
     }
 

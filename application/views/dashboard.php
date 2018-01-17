@@ -117,7 +117,26 @@
                     }
 
                     ?>
+
                 </div>
+                <?php if(isset($_GET['rec_bill_add'])){
+                    if($_GET['rec_bill_add']=='no'){
+                        echo '<p align="center" style="color:red">Recurring Bill could not be added</p>';
+                    }
+                    else{
+                        echo '<p align="center" style="color:green">Recurring Bill was succesfully added</p>';
+                    }
+                }
+                ?>
+                <?php if(isset($_GET['rec_bill_payed'])){
+                    if($_GET['rec_bill_payed']=='no'){
+                        echo '<p align="center" style="color:red">Recurring Bill could not be payed</p>';
+                    }
+                    else{
+                        echo '<p align="center" style="color:green">Recurring Bill was succesfully payed</p>';
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
