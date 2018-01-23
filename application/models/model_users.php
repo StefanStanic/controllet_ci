@@ -89,12 +89,37 @@ class Model_users extends CI_Model{
             return false;
         }
     }
+    public function insert_reset_key($key,$email){
+        $data=array(
+            "reset_key_hash"=>$key,
+            "reset_flag"=>1
+        );
+
+        $this->db->where('email',$email);
+        $query=$this->db->update('users',$data);
+        return $query;
+    }
+
     public function is_reset_key_valid($email,$key){
-        if(md5($email.'mojsalt123')==$key){
+        $this->db->where('reset_key_hash',$key);
+        $this->db->where('email',$email);
+        $data=array(
+            "reset_key_hash"=>"",
+            "reset_flag"=>2
+        );
+        $query=$this->db->get('users');
+        if($query->num_rows()==1){
+            $this->db->where('reset_key_hash',$key);
+            $this->db->where('email',$email);
+            $this->db->update('users',$data);
             return true;
         }else{
             return false;
         }
+    }
+
+    public function disable_reset_key(){
+
     }
     public function update_password($password,$email){
 

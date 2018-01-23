@@ -64,8 +64,7 @@ class admins extends CI_Controller
     }
 
     public function add_category(){
-        $this->form_validation->set_rules('category','category','required|trim');
-
+        $this->form_validation->set_rules('category','category','required|trim|is_unique[category.category_name]');
         if($this->form_validation->run()) {
             $this->load->model('dashboard_model');
             $data=array(
@@ -77,6 +76,9 @@ class admins extends CI_Controller
             else{
                 redirect('admins/admin_dashboard'.'?category_added=no');
             }
+        }
+        else{
+            redirect("admins/admin_dashboard".'?category_unique=no');
         }
     }
     public function delete_category($key){

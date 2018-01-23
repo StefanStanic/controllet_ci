@@ -303,7 +303,6 @@ class dashboard_model extends CI_Model
 
     public function update_re_profile($data){
         $id=$data['id_user'];
-
         if($this->upload->data('file_name')==null){
             $updateData=array(
                 "full_name"=>$data['full_name'],
@@ -319,6 +318,16 @@ class dashboard_model extends CI_Model
                 "location_city"=>$data['location_city'],
                 "location_country"=>$data['location_country'],
                 'picture'=>$this->upload->data('file_name')
+            );
+        }
+
+        if ($data['remove_picture']=="yes"){
+            $updateData=array(
+                "full_name"=>$data['full_name'],
+                "phone_number"=>$data['phone_number'],
+                "location_city"=>$data['location_city'],
+                "location_country"=>$data['location_country'],
+                'picture'=>''
             );
         }
 

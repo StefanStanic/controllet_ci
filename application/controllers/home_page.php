@@ -48,7 +48,7 @@ class home_page extends CI_Controller
 
             $config['upload_path']          = './pictures/profile_pictures/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_size']             = 100;
+            $config['max_size']             = 10000;
             $config['max_width']            = 5000;
             $config['max_height']           = 5000;
 

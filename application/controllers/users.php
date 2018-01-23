@@ -33,42 +33,52 @@ class users extends CI_Controller
         if($this->model_users->email_exists($this->input->post('email'))){
             $this->form_validation->set_rules('email','Email','required|valid_email|trim');
             if($this->form_validation->run()){
+                //generate Key
+                $key=md5(uniqid());
+                //get email
                 urldecode($email=$this->input->post('email'));
-                $config = array(
-                    'protocol'=>'smtp',
-                    'smtp_host'=>'ssl://smtp.gmail.com',
-                    'smtp_port'=>465,
-                    'smtp_user'=>'stefanmaileremail@gmail.com',
-                    'smtp_pass'=>'temppassword',
-                    'mailtype'=>'html',
-                    'charset'=> 'iso-8859-1',
-                    'wordwrap'=>TRUE
-                );
-                $this->load->library('email',$config);
-                $this->load->model("model_users");
-                $this->email->set_newline("\r\n");
+                //insert into users
 
-                //generate a random key
-                $key=md5($email."mojsalt123");
-                //send email to a user
-                $this->email->from('noreply@controllet.com',"Controllet Admin");
-                $this->email->to($this->input->post('email'));
-                $this->email->subject("Reset your password.");
-                $message="<p>We are here to help you reset your account, please follow the instructions</p>";
-                $message.="<p><a href='".base_url()."Users/reset_password_function/$email/$key'>Click here</a> to reset your accounts password.</p>";
-                $this->email->message($message);
-                if($this->email->send()){
-                    redirect('users/forgotten_password'."?emailsent=ok");
-                }else
-                {
-                    redirect('users/forgotten_password'."?emailsent=bad");
+                if($this->model_users->insert_reset_key($key,$email)){
+                    $config = array(
+                        'protocol'=>'smtp',
+                        'smtp_host'=>'ssl://smtp.gmail.com',
+                        'smtp_port'=>465,
+                        'smtp_user'=>'stefanmaileremail@gmail.com',
+                        'smtp_pass'=>'temppassword',
+                        'mailtype'=>'html',
+                        'charset'=> 'iso-8859-1',
+                        'wordwrap'=>TRUE
+                    );
+                    $this->load->library('email',$config);
+                    $this->load->model("model_users");
+                    $this->email->set_newline("\r\n");
+
+
+                    //send email to a user
+                    $this->email->from('noreply@controllet.com',"Controllet Admin");
+                    $this->email->to($this->input->post('email'));
+                    $this->email->subject("Reset your password.");
+                    $message="<p>We are here to help you reset your account, please follow the instructions</p>";
+                    $message.="<p><a href='".base_url()."Users/reset_password_function/$email/$key'>Click here</a> to reset your accounts password.</p>";
+                    $this->email->message($message);
+                    if($this->email->send()){
+                        redirect('users/forgotten_password'."?emailsent=ok");
+                    }else
+                    {
+                        redirect('users/forgotten_password'."?emailsent=bad");
+                    }
+
+                }
+                else{
+                    redirect('users/forgotten_password'."?insertKey=bad");
                 }
 
             }else{
                 redirect('users/forgotten_password'."?bad=ok");
             }
         }else{
-            $this->load->view('users/forgotten_password');
+            redirect('users/forgotten_password'."?emailExists=bad");
         }
     }
     public function reset_password_function($email,$key){
@@ -76,6 +86,10 @@ class users extends CI_Controller
             $data['email']=$email;
             $this->load->view("reset_password_form",$data);
         }
+        else{
+            redirect('users/forgotten_password'."?codebad=yes");
+        }
+
     }
     public function reset_password_form_check(){
         $this->form_validation->set_rules('password','Password','required|trim');

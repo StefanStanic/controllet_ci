@@ -40,12 +40,24 @@
         echo '<br/>';
         echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Sign in</button></p>';
     ?>
+    <?php if(isset($_GET['updatepass'])){
+        if($_GET['updatepass']=='ok'){
+            echo '<p align="center" style="color:green">New password has been set! Enjoy your time at Controllet!</p>';
+        }
+    }
+
+    ?>
+    <?php if(isset($_GET['user_login'])){
+        if($_GET['user_login']=='no'){
+            echo '<p align="center" style="color:red">Username or password not matching!</p>';
+        }
+    }
+    ?>
     <?php echo form_close();?>
     <?php echo '<p align="center">'.validation_errors();'</p> '?>
     <?php echo '<p align="center">Dont have an account? Register<a style="color: #2e6da4" href="';?><?php echo base_url();?><?php echo 'users/register"> here</a></p>';?>
     <?php echo '<p align="center">Forgot your password? Reset <a style="color: #2e6da4" href="';?><?php echo base_url();?><?php echo 'Users/forgotten_password"> here</a></p>';?>
     <?php echo '</div>'?>
-
 </div>
 </body>
 </html>

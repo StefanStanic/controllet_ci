@@ -48,15 +48,6 @@
         <?php echo form_open('dashboard/new_rec_bill_validation');?>
 
             <?php
-//            $options = array(
-//                '1' => 'Phone',
-//                '2' => 'Internet',
-//                '3' => 'Electricity',
-//                '4' => 'Water',
-//                '5' => 'Mortgage',
-//                '6' => 'Car Payment'
-//            );
-
             $option=array();
             foreach($categories as $category) {
                 $option[$category->id_category] = $category->category_name;

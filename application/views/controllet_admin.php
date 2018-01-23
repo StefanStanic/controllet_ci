@@ -72,12 +72,19 @@ if(isset($categories)){
     echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add category</button></p>';
     form_close();
     ?>
+    <?php echo '<p align="center">'.validation_errors().'</p>'?>
     <?php if(isset($_GET['category_added'])){
         if($_GET['category_added']=='no'){
             echo '<p align="center" style="color:red">Category was not added</p>';
         }
         else{
             echo '<p align="center" style="color:green">Category was succesfully added</p>';
+        }
+    }
+    ?>
+    <?php if(isset($_GET['category_unique'])){
+        if($_GET['category_unique']=='no'){
+            echo '<p align="center" style="color:red">Category already exists</p>';
         }
     }
     ?>

@@ -47,13 +47,12 @@
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
     <?php echo form_open_multipart('dashboard/update_profile_validation');?>
     <?php
-
     foreach ($profile as $row) {
-
         echo '<p align="center">Full Name: </p>'. form_input(['name' => 'full_name', 'id' => 'full_name', 'class' => 'form-control', 'value' => $row->full_name, 'placeholder' => 'Full Name']);
         echo '<p align="center">Phone Number: </p>'.form_input(['name' => 'phone_number', 'id' => 'phone_number', 'class' => 'form-control', 'value' => $row->phone_number, 'placeholder' => 'Phone Number']);
         echo '<p align="center">City: </p>'.form_input(['name' => 'location_city', 'id' => 'location_city', 'class' => 'form-control', 'value' => $row->location_city, 'placeholder' => 'City']);
         echo '<p align="center">Country: </p>'.form_input(['name' => 'location_country', 'id' => 'location_country', 'class' => 'form-control', 'value' => $row->location_country, 'placeholder' => 'Country']);
+        echo '<p align="center" style="font-size: 15pt">Remove current picture(check if yes): </p>'.'<p align="center">'.'<input type="checkbox" name="remove_picture" value="yes">'.'</p>';
         echo '<input type="file" name="userpictures">';
         echo form_hidden('id_user', $row->id_user);
         echo '<br/>';

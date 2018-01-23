@@ -65,7 +65,6 @@ class dashboard extends CI_Controller{
         $data2=$this->dashboard_model->get_selected_data_months_2($cat2,$date2);
         $data=array($data1,$data2);
         echo json_encode($data);
-
     }
 
     public function index(){
@@ -105,7 +104,7 @@ class dashboard extends CI_Controller{
     public function new_rec_bill_validation() {
         $this->form_validation->set_rules('recurring_date','recurring_date','required|trim');
         $this->form_validation->set_rules('category','category','required|trim');
-        $this->form_validation->set_rules('amount','amount','required|trim');
+        $this->form_validation->set_rules('amount','amount','numeric|required|trim');
         $this->form_validation->set_rules('description','description','required|trim');
 
         if($this->form_validation->run()) {
@@ -131,10 +130,10 @@ class dashboard extends CI_Controller{
     }
 
     public function new_income_validation() {
-        $this->form_validation->set_rules('company','company','required|trim');
+        $this->form_validation->set_rules('company','company','required|trim|xss_clean');
         $this->form_validation->set_rules('date_of_monthly_income','date_of_monthly_income','required|trim');
-        $this->form_validation->set_rules('amount_of_monthly_income','amount_of_monthly_income','required|trim');
-        $this->form_validation->set_rules('job_category','job_category','required|trim');
+        $this->form_validation->set_rules('amount_of_monthly_income','amount_of_monthly_income','numeric|required|trim');
+        $this->form_validation->set_rules('job_category','job_category','required|trim|xss_clean');
 
         if($this->form_validation->run()) {
             $this->load->model('dashboard_model');
@@ -243,12 +242,12 @@ class dashboard extends CI_Controller{
                 "location_city"=>$this->input->post('location_city'),
                 "location_country"=>$this->input->post('location_country'),
                 "picture"=>$this->upload->data('file_name'),
+                "remove_picture"=>$this->input->post('remove_picture'),
                 "id_user"=>$this->input->post('id_user')
             );
 
             $this->load->model('dashboard_model');
             if($checksomethng=$this->dashboard_model->update_re_profile($data)){
-//                var_dump($checksomethng);
                 redirect('dashboard/profile');
             }
             else{

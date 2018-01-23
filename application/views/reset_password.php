@@ -39,6 +39,26 @@
     echo '<br/>';
     echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Reset Password</button></p>';
     ?>
+    <?php if(isset($_GET['emailsent'])){
+        if($_GET['emailsent']=='bad'){
+            echo '<p align="center" style="color:red">Email not valid, or does not exist</p>';
+        }
+        else{
+            echo '<p align="center" style="color:green">Email valid, if accounts exists, reset password was sent!</p>';
+        }
+    }
+    ?>
+    <?php if(isset($_GET['codebad'])){
+        if($_GET['codebad']=='yes'){
+        echo '<p align="center" style="color:red">Reset password code not valid!</p>';
+        }
+    }
+    ?>
+    <?php if(isset($_GET['emailExists'])){
+        if($_GET['emailExists']=='bad'){
+            echo '<p align="center" style="color:red">This email is not valid, or may not exist!</p>';
+        }
+    }?>
 </div>
 </body>
 </html>
