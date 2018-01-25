@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Control bills</title>
+    <title>Control income</title>
     <!--Linking style || linking JS-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css">
@@ -43,26 +43,28 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-    <h2 align="center">List Of One Time Bills</h2><br><br>
+    <h2 align="center">List Of incomes</h2><br><br>
     <?php
     echo ' <table class="table table-hover">
     <thead>
       <tr>
-        <th>Date of bill</th>
-        <th>Category</th>
-        <th>Amount to pay</th>
-        <th>Description</th>
+        <th>Comapany Name</th>
+        <th>Date of income</th>
+        <th>Amount of income</th>
+        <th>Job category</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>';
-//    var_dump($onetimebills);
-    if(isset($onetimebills)){
-        foreach ($onetimebills as $row){
+    if(isset($income)){
+        foreach ($income as $row){
             echo "<tr>";
-            echo '<td>'.$row->date_added.'</td>';
-            echo '<td>'.$row->category.'</td>';
-            echo '<td>'.$row->amount.' Din</td>';
-            echo '<td>'.$row->description.'</td>';
+            echo '<td>'.$row->company.'</td>';
+            echo '<td>'.$row->date_of_monthly_income.'</td>';
+            echo '<td>'.$row->amount_of_monthly_income.' Din</td>';
+            echo '<td>'.$row->job_category.'</td>';
+//            echo '<td>'.'<a class="btn btn-warning" role="button" href="'.base_url().'dashboard/update_income/'.$row->id_my_income.'">Edit</a>'.'</td>';
+            echo '<td>'.'<a class="btn btn-danger" role="button" href="'.base_url().'dashboard/delete_income/'.$row->id_my_income.'">Delete</a>'.'</td>';
             echo "</tr>";
         }
     }
@@ -70,12 +72,14 @@
     </tbody>
   </table>';
     ?>
-    <?php if(isset($_GET['custom_bill_add'])){
-        if($_GET['custom_bill_add']=='no'){
-            echo '<p align="center" style="color:red">One time bill could not be added</p>';
-        }
-        else{
-            echo '<p align="center" style="color:green">One time bill was succesfully added</p>';
+    <?php if(isset($_GET['status'])){
+        if($_GET['status']=='overflow'){
+            echo '<p align="center" style="color:red">Your budget overflow, please set your income again. Your budget has been set to 0!</p>';
+         }
+        else if($_GET['status']=='reducted'){
+        echo '<p align="center" style="color:green">Your income was deleted, you may now enter a new one if you like!</p>';
+        }else{
+            echo '<p align="center" style="color:red">There was an error, please try again later</p>';
         }
     }
     ?>

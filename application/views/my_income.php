@@ -47,9 +47,9 @@
     <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
     <?php echo form_open('dashboard/new_income_validation');?>
     <?php
-    echo form_input(['name' => 'company', 'id' => 'company', 'class' => 'form-control', 'value' => set_value('company'), 'placeholder' => 'Company']);
+    echo form_input(['name' => 'company', 'id' => 'company', 'class' => 'form-control', 'value' => set_value('company'), 'placeholder' => 'Company name']);
     echo form_input(['name' => 'date_of_monthly_income', 'id' => 'date_of_monthly_income', 'class' => 'form-control', 'value' => set_value('date_of_monthly_income'), 'placeholder' => 'Date Of Monthly Income']);
-    echo form_input(['name' => 'amount_of_monthly_income', 'id' => 'amount_of_monthly_income', 'class' => 'form-control', 'value' => set_value('amount_of_monthly_income'), 'placeholder' => 'Amount of monthly income']);
+    echo form_input(['type'=>'numeric','name' => 'amount_of_monthly_income', 'id' => 'amount_of_monthly_income', 'class' => 'form-control', 'value' => set_value('amount_of_monthly_income'), 'placeholder' => 'Amount of monthly income in (DIN)']);
     echo form_input(['name' => 'job_category', 'id' => 'job_category', 'class' => 'form-control', 'value' => set_value('job_category'), 'placeholder' => 'Job Category']);
     echo form_hidden('id_user',$this->session->userdata('id'));
     echo '<br/>';

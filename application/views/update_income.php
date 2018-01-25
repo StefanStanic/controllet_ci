@@ -7,7 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Control bills</title>
+    <title>Update Income</title>
     <!--Linking style || linking JS-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url();?>css/custom.css">
@@ -43,42 +43,39 @@
     </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-    <h2 align="center">List Of One Time Bills</h2><br><br>
+    <h2 align="center">Update Income</h2>
+    <?php echo '<div class="col-lg-offset-4 col-md-4 col-sm-12 col-xs-12">';?>
+    <?php echo form_open('dashboard/update_income_validation');?>
+
     <?php
-    echo ' <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Date of bill</th>
-        <th>Category</th>
-        <th>Amount to pay</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>';
-//    var_dump($onetimebills);
-    if(isset($onetimebills)){
-        foreach ($onetimebills as $row){
-            echo "<tr>";
-            echo '<td>'.$row->date_added.'</td>';
-            echo '<td>'.$row->category.'</td>';
-            echo '<td>'.$row->amount.' Din</td>';
-            echo '<td>'.$row->description.'</td>';
-            echo "</tr>";
-        }
-    }
-    echo '
-    </tbody>
-  </table>';
-    ?>
-    <?php if(isset($_GET['custom_bill_add'])){
-        if($_GET['custom_bill_add']=='no'){
-            echo '<p align="center" style="color:red">One time bill could not be added</p>';
-        }
-        else{
-            echo '<p align="center" style="color:green">One time bill was succesfully added</p>';
-        }
+    foreach ($income as $row){
+    echo form_input(['name' => 'company', 'id' => 'company', 'class' => 'form-control', 'value' => $row->company, 'placeholder' => 'Company name']);
+    echo form_input(['name' => 'date_of_monthly_income', 'id' => 'date_of_monthly_income', 'class' => 'form-control', 'value' =>$row->date_of_monthly_income, 'placeholder' => 'Date Of Monthly Income']);
+    echo form_input(['type'=>'numeric','name' => 'amount_of_monthly_income', 'id' => 'amount_of_monthly_income', 'class' => 'form-control', 'value' =>$row->amount_of_monthly_income , 'placeholder' => 'Amount of monthly income in (DIN)']);
+    echo form_input(['name' => 'job_category', 'id' => 'job_category', 'class' => 'form-control', 'value' => $row->job_category, 'placeholder' => 'Job Category']);
+    echo form_hidden('id_user',$this->session->userdata('id'));
+    echo form_hidden('id_user',$this->session->userdata('id'));
+    echo '<br/>';
+    echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Update income</button></p>';
+
     }
     ?>
+    <?php echo form_close();?>
+    <?php echo validation_errors(); ?>
+    <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-datepicker3.min.css">
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="date_of_monthly_income"]');
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            date_input.datepicker({
+                format: 'yyyy-mm-dd',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            })
+        })
+    </script>
 </div>
 </body>
 </html>

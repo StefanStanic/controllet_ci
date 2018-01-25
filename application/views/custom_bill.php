@@ -50,12 +50,12 @@
     <?php echo form_open('dashboard/new_custom_bill_validation');?>
 
     <?php
-    echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount']);
+    echo form_input(['name' => 'amount', 'id' => 'amount', 'class' => 'form-control', 'value' => set_value('amount'), 'placeholder' => 'Amount in Dinar']);
     echo form_input(['name' => 'description', 'id' => 'description', 'class' => 'form-control', 'value' => set_value('description'), 'placeholder' => 'Description']);
     echo form_hidden('id_user',$this->session->userdata('id'));
     echo form_hidden('category','custom');
     echo '<br/>';
-    echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a bill</button></p>';
+    echo '<p align="center"><button class="btn btn-lg btn-primary" type="submit">Add a one time bill</button></p>';
     ?>
     <?php echo form_close();?>
     <?php echo validation_errors(); ?>

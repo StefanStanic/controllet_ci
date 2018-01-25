@@ -52,6 +52,7 @@
         <th>Category</th>
         <th>Amount to pay</th>
         <th>Description</th>
+        <th>Active</th>
         <th>Update</th>
         <th>Delete</th>
       </tr>
@@ -59,11 +60,18 @@
     <tbody>';
     if(isset($bills)){
         foreach ($bills as $row){
+            $active="";
+            if($row->active){
+                $active.="Not payed this month";
+            }else{
+                $active.="Bill payed this month";
+            }
             echo "<tr>";
             echo '<td>'.$row->recurring_date.'</td>';
             echo '<td>'.$row->category_name.'</td>';
             echo '<td>'.$row->amount.' eur</td>';
             echo '<td>'.$row->description.'</td>';
+            echo '<td>'.$active.'</td>';
             echo '<td>'.'<a class="btn btn-warning" role="button" href="'.base_url().'dashboard/update_bill/'.$row->id_montly_bills.'">Edit</a>'.'</td>';
             echo '<td>'.'<a class="btn btn-danger" role="button" href="'.base_url().'dashboard/delete_bill/'.$row->id_montly_bills.'">Delete</a>'.'</td>';
             echo "</tr>";

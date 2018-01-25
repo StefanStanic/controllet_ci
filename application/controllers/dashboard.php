@@ -44,9 +44,24 @@ class dashboard extends CI_Controller{
         $this->load->view('control_bills');
     }
 
+
+//    public function update_bill($key){
+//        $data['categories']=$this->dashboard_model->get_categories();
+//        $data['bill']=$this->dashboard_model->get_specific_bill($key);
+//        $this->load->view('update_bill',$data);
+//    }
+
+
+
+
     public function control_bills(){
-        $data['bills']=$this->dashboard_model->get_bills();
+        $data['bills']=$this->dashboard_model->get_active_non_active_bills();
         $this->load->view('control_bills',$data);
+    }
+
+    public function all_income(){
+        $data['income']=$this->dashboard_model->get_income();
+        $this->load->view('all_income',$data);
     }
     public function one_time_bills(){
         $data['onetimebills']=$this->dashboard_model->get_onetime_bills();
@@ -101,6 +116,53 @@ class dashboard extends CI_Controller{
         }
     }
 
+    public function delete_income($key){
+        if($status=$this->dashboard_model->detele_specific_income($key)){
+            if($status=="budgetReducted"){
+                redirect('dashboard/all_income'.'?status=reducted');
+            }else if($status=="budgetOverflow"){
+                redirect('dashboard/all_income'.'?status=overflow');
+            }else{
+                redirect('dashboard/all_income'.'?status=badQuery');
+            }
+        }
+
+    }
+//    public function update_income($key){
+//        $data['income']=$this->dashboard_model->get_specific_income($key);
+//        $this->load->view('update_income',$data);
+//    }
+
+//    //update income
+//    public function update_income_validation() {
+//        $this->form_validation->set_rules('company','company','required|trim');
+//        $this->form_validation->set_rules('date_of_monthly_income','date_of_monthly_income','required|trim');
+//        $this->form_validation->set_rules('amount_of_monthly_income','amount_of_monthly_income','numeric|required|trim');
+//        $this->form_validation->set_rules('job_category','job_category','required|trim');
+//
+//        if($this->form_validation->run()) {
+//            $this->load->model('dashboard_model');
+//            $old_amount_income=$this->input->post('amount_of_monthly_income');
+//            $data=array(
+//                "company"=>$this->input->post('company'),
+//                "date_of_monthly_income"=>$this->input->post('date_of_monthly_income'),
+//                "amount_of_monthly_income"=>$this->input->post('amount_of_monthly_income'),
+//                "job_category"=>$this->input->post('job_category'),
+//                "id_user"=>$this->input->post('id_user')
+//            );
+//            if($this->dashboard_model->update_specific_income($data,$old_amount_income)){
+//                redirect('dashboard'.'?update_new_income=ok');
+//            }
+//            else{
+//                redirect('dashboard'.'?update_income=no');
+//            }
+//        }
+//        else{
+//            $this->load->view("my_income");
+//        }
+//
+//    }
+
     public function new_rec_bill_validation() {
         $this->form_validation->set_rules('recurring_date','recurring_date','required|trim');
         $this->form_validation->set_rules('category','category','required|trim');
@@ -130,10 +192,10 @@ class dashboard extends CI_Controller{
     }
 
     public function new_income_validation() {
-        $this->form_validation->set_rules('company','company','required|trim|xss_clean');
+        $this->form_validation->set_rules('company','company','required|trim');
         $this->form_validation->set_rules('date_of_monthly_income','date_of_monthly_income','required|trim');
         $this->form_validation->set_rules('amount_of_monthly_income','amount_of_monthly_income','numeric|required|trim');
-        $this->form_validation->set_rules('job_category','job_category','required|trim|xss_clean');
+        $this->form_validation->set_rules('job_category','job_category','required|trim');
 
         if($this->form_validation->run()) {
             $this->load->model('dashboard_model');
@@ -152,7 +214,7 @@ class dashboard extends CI_Controller{
             }
         }
         else{
-            redirect('dashboard');
+            $this->load->view("my_income");
         }
 
     }

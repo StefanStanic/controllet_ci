@@ -5,11 +5,21 @@ class dashboard_model extends CI_Model
 
     public function get_bills()
     {
-        $userId = $this->session->userdata('id');
         $this->db->select("*");
         $this->db->from("recurring_montly_bills");
         $this->db->join('category','category.id_category=recurring_montly_bills.category_id');
         $this->db->where('active','1');
+        $query=$this->db->get();
+//        $this->db->where('id_user', $userId);
+//        $this->db->where('active',1);
+//        $this->db->join('Category a','a.')
+//        $query = $this->db->get('recurring_montly_bills');
+        return $query->result();
+    }
+    public function get_active_non_active_bills(){
+        $this->db->select("*");
+        $this->db->from("recurring_montly_bills");
+        $this->db->join('category','category.id_category=recurring_montly_bills.category_id');
         $query=$this->db->get();
 //        $this->db->where('id_user', $userId);
 //        $this->db->where('active',1);
@@ -154,6 +164,62 @@ class dashboard_model extends CI_Model
         }
     }
 
+    public function detele_specific_income($id){
+        $returnValue="";
+        //get value to update budget
+        $this->db->where('id_my_income',$id);
+        $query=$this->db->get('my_income');
+        $row=$query->row();
+        $incomeValue=$row->amount_of_monthly_income;
+
+        $this->db->where('id_my_income',$id);
+        $query=$this->db->delete('my_income');
+        if($query){
+            $userId = $this->session->userdata('id');
+            $this->db->where('id_user',$userId);
+            $query=$this->db->get('budget');
+            $row=$query->row();
+            $budget=$row->budget_amount;
+            if($query) {
+                $newBudget=$budget-$incomeValue;
+                if($newBudget>0){
+                    $data=array(
+                        "budget_amount"=>$newBudget
+                    );
+                    $this->db->where('id_user',$userId);
+                    $query=$this->db->update('budget',$data);
+                    if($query){
+                        $returnValue.="budgetReducted";
+                    }
+                }else{
+                    $data=array(
+                        "budget_amount"=>0
+                    );
+                    // set budget to 0
+                    $this->db->where('id_user',$userId);
+                    $updateToZero=$this->db->update('budget',$data);
+
+                    //deletes incomes---> makes the user recreate them
+                    $this->db->where('id_user',$userId);
+                    $recreateIncome=$this->db->delete('my_income');
+                    if($recreateIncome and $updateToZero){
+                        $returnValue.="budgetOverflow";
+                    }
+                }
+            }else return false;
+        }else return false;
+        return $returnValue;
+    }
+
+//    public function update_specific_income($data,$oldIncome){
+//
+//    }
+
+    public function get_specific_income($key){
+        $this->db->where("id_my_income",$key);
+        $query=$this->db->get('my_income');
+        return $query->result();
+    }
 
     public function can_pay_my_bills($key){
 //        echo $key;
@@ -246,7 +312,6 @@ class dashboard_model extends CI_Model
             $id=$data['id_user'];
             $this->db->where('id_user',$id);
             $query=$this->db->insert('my_income',$data);
-
             $this->db->where('id_user',$id);
             $query1=$this->db->get('budget');
             if($query1->num_rows()>0){
@@ -255,11 +320,9 @@ class dashboard_model extends CI_Model
                 $row=$getCurrentBudget->row();
                 $currentBudgedAmout=$row->budget_amount;
                 $newBudgetAmount=$data['amount_of_monthly_income'];
-
                 $finalBudged=$currentBudgedAmout+$newBudgetAmount;
-
                 $budgetUpdate=array(
-                  "budget_amount"=>$finalBudged
+                    "budget_amount"=>$finalBudged
                 );
                 $this->db->where('id_user',$id);
                 $this->db->update('budget',$budgetUpdate);
@@ -277,7 +340,7 @@ class dashboard_model extends CI_Model
             else{
                 return false;
             }
-    }
+            }
 
 
 

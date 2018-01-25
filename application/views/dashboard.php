@@ -63,6 +63,7 @@
                     <li><a href="<?php echo base_url(); ?>dashboard/add_new_bill"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp Add a new bill</a></li>
                     <li><a href="<?php echo base_url(); ?>dashboard/control_bills"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp All my bills</a></li>
                     <li><a href="<?php echo base_url(); ?>dashboard/add_my_income"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;Add My Income</a></li>
+                    <li><a href="<?php echo base_url(); ?>dashboard/all_income"><i class="fa fa-usd" aria-hidden="true"></i>&nbsp;&nbsp All my Incomes</a></li>
                     <li><a href="<?php echo base_url(); ?>dashboard/one_time_bills"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbsp;&nbsp;All onetime transactions</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -151,7 +152,7 @@
                     foreach ($budget as $row) {
                         $tot_budget = $row->budget_amount;
                     }
-                    echo '<h3 align="center">Total monthly budget: </h3><p align="center">' . $tot_budget . ' eur' . '<br/>';
+                    echo '<h3 align="center">Total monthly budget: </h3><p align="center">' . $tot_budget . ' Din' . '<br/>';
                     ?>
                 </div>
             </div>
@@ -167,7 +168,7 @@
                         foreach ($income as $row) {
                             echo '<b><h4 align="center">Company: </h4></b><p align="center">' . $row->company . '</p>';
                             echo '<b><h4 align="center">Date of income:</h4></b> <p align="center">' . $row->date_of_monthly_income . '</p>';
-                            echo '<b><h4 align="center">Amount of income: </h4></b><p align="center">' . $row->amount_of_monthly_income . ' eur</p>';
+                            echo '<b><h4 align="center">Amount of income: </h4></b><p align="center">' . $row->amount_of_monthly_income . ' Din</p>';
                             echo '<b><h4 align="center">Job Category: </h4></b><p align="center">' . $row->job_category . '</p>' . '<br/>';
                             echo '<hr>';
                         }
