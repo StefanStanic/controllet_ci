@@ -45,26 +45,26 @@ class dashboard_model extends CI_Model
         return $query->result();
     }
 
-    public function get_current_month_transactions_by_type(){
-        $userId = $this->session->userdata('id');
-        $currentMonth=date('m');
-        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='5' and MONTH(date_of_transaction)='$currentMonth'");
-        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='4' and MONTH(date_of_transaction)='$currentMonth'");
-        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='2' and MONTH(date_of_transaction)='$currentMonth'");
-        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='1' and MONTH(date_of_transaction)='$currentMonth'");
-        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='3' and MONTH(date_of_transaction)='$currentMonth'");
-        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='6' and MONTH(date_of_transaction)='$currentMonth'");
-
-        $statData=array(
-            "1"=>$queryPhone->result(),
-            "2"=>$queryInternet->result(),
-            "3"=>$queryElectricity->result(),
-            "4"=>$queryWater->result(),
-            "5"=>$queryMortgage->result(),
-            "6"=>$queryCarPayment->result()
-        );
-        return $statData;
-    }
+//    public function get_current_month_transactions_by_type(){
+//        $userId = $this->session->userdata('id');
+//        $currentMonth=date('m');
+//        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='5' and MONTH(date_of_transaction)='$currentMonth'");
+//        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='4' and MONTH(date_of_transaction)='$currentMonth'");
+//        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='2' and MONTH(date_of_transaction)='$currentMonth'");
+//        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='1' and MONTH(date_of_transaction)='$currentMonth'");
+//        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='3' and MONTH(date_of_transaction)='$currentMonth'");
+//        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='6' and MONTH(date_of_transaction)='$currentMonth'");
+//
+//        $statData=array(
+//            "1"=>$queryPhone->result(),
+//            "2"=>$queryInternet->result(),
+//            "3"=>$queryElectricity->result(),
+//            "4"=>$queryWater->result(),
+//            "5"=>$queryMortgage->result(),
+//            "6"=>$queryCarPayment->result()
+//        );
+//        return $statData;
+//    }
 
     public function get_categories(){
         $query=$this->db->query("SELECT * from category order by id_category LIMIT 100 OFFSET 1");
@@ -93,29 +93,29 @@ class dashboard_model extends CI_Model
         return $this->db->get()->result();
     }
 
-
-    public function get_previous_month_transactions_by_type(){
-        $userId = $this->session->userdata('id');
-        $pastMonth = (int) date('n', strtotime('-1 months'));
-        $pastMonthyear = (int) date('Y', strtotime('-1 months'));
-
-        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='5' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='4' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='2' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='1' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='3' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='6' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
-
-        $statData=array(
-            "1"=>$queryPhone->result(),
-            "2"=>$queryInternet->result(),
-            "3"=>$queryElectricity->result(),
-            "4"=>$queryWater->result(),
-            "5"=>$queryMortgage->result(),
-            "6"=>$queryCarPayment->result()
-        );
-        return $statData;
-    }
+//
+//    public function get_previous_month_transactions_by_type(){
+//        $userId = $this->session->userdata('id');
+//        $pastMonth = (int) date('n', strtotime('-1 months'));
+//        $pastMonthyear = (int) date('Y', strtotime('-1 months'));
+//
+//        $queryPhone=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='5' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//        $queryInternet=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='4' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//        $queryElectricity=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='2' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//        $queryWater=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='1' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//        $queryMortgage=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='3' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//        $queryCarPayment=$this->db->query("SELECT transaction_amount,date_of_transaction,category from transactions WHERE id_user='$userId' and category='6' and MONTH(date_of_transaction)='$pastMonth' and YEAR(date_of_transaction)='$pastMonthyear'");
+//
+//        $statData=array(
+//            "1"=>$queryPhone->result(),
+//            "2"=>$queryInternet->result(),
+//            "3"=>$queryElectricity->result(),
+//            "4"=>$queryWater->result(),
+//            "5"=>$queryMortgage->result(),
+//            "6"=>$queryCarPayment->result()
+//        );
+//        return $statData;
+//    }
 
     public function get_income()
     {

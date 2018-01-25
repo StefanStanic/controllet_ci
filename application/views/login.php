@@ -53,6 +53,15 @@
         }
     }
     ?>
+    <?php if(isset($_GET['email_sent'])){
+        if($_GET['email_sent']=='yes'){
+            echo '<p align="center" style="color:green">Confirmation Email has been sent to your email! Please check spam!</p>';
+        }
+        else{
+            echo '<p align="center" style="color:red">Email was not sent! Try again later</p>';
+        }
+    }
+    ?>
     <?php echo form_close();?>
     <?php echo '<p align="center">'.validation_errors();'</p> '?>
     <?php echo '<p align="center">Dont have an account? Register<a style="color: #2e6da4" href="';?><?php echo base_url();?><?php echo 'users/register"> here</a></p>';?>

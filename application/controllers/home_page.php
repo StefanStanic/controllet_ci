@@ -83,7 +83,7 @@ class home_page extends CI_Controller
 
              if($this->model_users->add_temp_user($key)){
                  if($this->email->send()){
-                     redirect('users/login');
+                     redirect('users/login'.'?email_sent=yes');
                  }redirect('users/register'.'?email_sent=no');
              }redirect('users/register'.'?add_user=no');
              //add them to database with   flag 0

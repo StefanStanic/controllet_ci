@@ -89,8 +89,8 @@ class dashboard extends CI_Controller{
             $data['income']=$this->dashboard_model->get_income();
             $data['budget']=$this->dashboard_model->get_budget();
             $data['categories']=$this->dashboard_model->get_categories();
-            $data['current_month_statistics']=$this->dashboard_model->get_current_month_transactions_by_type();
-            $data['previous_month_statistics']=$this->dashboard_model->get_previous_month_transactions_by_type();
+//            $data['current_month_statistics']=$this->dashboard_model->get_current_month_transactions_by_type();
+//            $data['previous_month_statistics']=$this->dashboard_model->get_previous_month_transactions_by_type();
             $this->load->view("dashboard",$data);
         }
         else{
