@@ -110,9 +110,6 @@ class home_page extends CI_Controller
         }
     }
 
-
-
-
     public function restricted(){
         $this->load->view('restricted');
     }
