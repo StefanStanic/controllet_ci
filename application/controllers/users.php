@@ -28,6 +28,14 @@ class users extends CI_Controller
         $this->load->view("reset_password");
     }
 
+    /*
+     * Gets input from reset password field.
+     * Check if the email exists
+     * Checks if rules apply if so
+     * Gets the input email, and sends that and the random generates key to email
+     * Inputs generated key into db
+     * Redirects to forgetten_password
+     */
 
     public function check_reset_password(){
         if($this->model_users->email_exists($this->input->post('email'))){
@@ -81,6 +89,13 @@ class users extends CI_Controller
             redirect('users/forgotten_password'."?emailExists=bad");
         }
     }
+
+    /*
+     * Gets data from link (EMAIL, KEY)
+     * Checks if the reset key is valid
+     * If so it deletes it from db and passes the email to reset password form
+     * If not, redirects with bad code
+     */
     public function reset_password_function($email,$key){
         if($this->model_users->is_reset_key_valid($email,$key)){
             $data['email']=$email;
@@ -91,6 +106,14 @@ class users extends CI_Controller
         }
 
     }
+
+    /*
+     * Gets data from the two password fields
+     * If they match, and if rules apply updates the password in the DB
+     * Redirects to login with OK
+     * Else redirects with BAD
+     */
+
     public function reset_password_form_check(){
         $this->form_validation->set_rules('password','Password','required|trim');
         $this->form_validation->set_rules('cpassword','Confirm Password','required|trim|matches[password]');
